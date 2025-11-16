@@ -10,13 +10,13 @@ import (
 	"github.com/nexus-rpc/sdk-go/nexus"
 	"github.com/stretchr/testify/require"
 
-	"github.com/bubo-squared/temporal-go-sdk/client"
-	"github.com/bubo-squared/temporal-go-sdk/interceptor"
-	"github.com/bubo-squared/temporal-go-sdk/temporal"
-	"github.com/bubo-squared/temporal-go-sdk/temporalnexus"
-	"github.com/bubo-squared/temporal-go-sdk/testsuite"
-	"github.com/bubo-squared/temporal-go-sdk/worker"
-	"github.com/bubo-squared/temporal-go-sdk/workflow"
+	"github.com/bubo-squared/temporal-sdk-go/client"
+	"github.com/bubo-squared/temporal-sdk-go/interceptor"
+	"github.com/bubo-squared/temporal-sdk-go/temporal"
+	"github.com/bubo-squared/temporal-sdk-go/temporalnexus"
+	"github.com/bubo-squared/temporal-sdk-go/testsuite"
+	"github.com/bubo-squared/temporal-sdk-go/worker"
+	"github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 var testWorkflowStartTime = time.Date(1969, 7, 20, 20, 17, 0, 0, time.UTC)

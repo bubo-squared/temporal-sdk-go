@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 	protocolpb "go.temporal.io/api/protocol/v1"
-	"github.com/bubo-squared/temporal-go-sdk/internal/protocol"
+	"github.com/bubo-squared/temporal-sdk-go/internal/protocol"
 )
 
 type mockInstance struct {

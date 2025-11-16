@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
 )
 
 type SessionTestSuite struct {

@@ -15,9 +15,9 @@ import (
 	enumspb "go.temporal.io/api/enums/v1"
 
 	"go.temporal.io/api/serviceerror"
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 type (
@@ -32,7 +32,7 @@ type (
 
 	// WorkflowTestSuite is the test suite to run unit tests for workflow/activity.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/testsuite.WorkflowTestSuite]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/testsuite.WorkflowTestSuite]
 	WorkflowTestSuite struct {
 		logger                      log.Logger
 		metricsHandler              metrics.Handler
@@ -43,7 +43,7 @@ type (
 
 	// TestWorkflowEnvironment is the environment that you use to test workflow
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/testsuite.TestWorkflowEnvironment]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/testsuite.TestWorkflowEnvironment]
 	TestWorkflowEnvironment struct {
 		workflowMock mock.Mock
 		activityMock mock.Mock
@@ -53,14 +53,14 @@ type (
 
 	// TestActivityEnvironment is the environment that you use to test activity
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/testsuite.TestActivityEnvironment]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/testsuite.TestActivityEnvironment]
 	TestActivityEnvironment struct {
 		impl *testWorkflowEnvironmentImpl
 	}
 
 	// MockCallWrapper is a wrapper to mock.Call. It offers the ability to wait on workflow's clock instead of wall clock.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/testsuite.MockCallWrapper]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/testsuite.MockCallWrapper]
 	MockCallWrapper struct {
 		call *mock.Call
 		env  *TestWorkflowEnvironment
@@ -75,7 +75,7 @@ type (
 	//
 	// Note: If any of the three fields are omitted, a no-op implementation will be used by default.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/testsuite.TestUpdateCallback]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/testsuite.TestUpdateCallback]
 	TestUpdateCallback struct {
 		OnAccept   func()
 		OnReject   func(error)
@@ -424,7 +424,7 @@ func (e *TestWorkflowEnvironment) OnActivity(activity interface{}, args ...inter
 // ErrMockStartChildWorkflowFailed is special error used to indicate the mocked child workflow should fail to start.
 // This error is also exposed as public as testsuite.ErrMockStartChildWorkflowFailed
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/testsuite.ErrMockStartChildWorkflowFailed]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/testsuite.ErrMockStartChildWorkflowFailed]
 var ErrMockStartChildWorkflowFailed = fmt.Errorf("start child workflow failed: %v", enumspb.START_CHILD_WORKFLOW_EXECUTION_FAILED_CAUSE_WORKFLOW_ALREADY_EXISTS)
 
 // OnWorkflow setup a mock call for workflow. Parameter workflow must be workflow function (func) or workflow name (string).

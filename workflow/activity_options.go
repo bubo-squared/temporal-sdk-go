@@ -3,8 +3,8 @@ package workflow
 import (
 	"time"
 
-	"github.com/bubo-squared/temporal-go-sdk/internal"
-	"github.com/bubo-squared/temporal-go-sdk/temporal"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
+	"github.com/bubo-squared/temporal-sdk-go/temporal"
 )
 
 // ActivityOptions stores all activity-specific invocation parameters that will be stored inside of a context.

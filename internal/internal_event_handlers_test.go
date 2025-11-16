@@ -13,9 +13,9 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/anypb"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	iconverter "github.com/bubo-squared/temporal-go-sdk/internal/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/protocol"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	iconverter "github.com/bubo-squared/temporal-sdk-go/internal/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/protocol"
 )
 
 type mockWorkflowDefinition struct {

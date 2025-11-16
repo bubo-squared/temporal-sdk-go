@@ -1,4 +1,4 @@
-module github.com/bubo-squared/temporal-go-sdk
+module github.com/bubo-squared/temporal-sdk-go
 
 go 1.23.0
 

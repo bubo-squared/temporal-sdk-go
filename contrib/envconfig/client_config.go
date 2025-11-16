@@ -12,8 +12,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/bubo-squared/temporal-go-sdk/client"
-	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-sdk-go/client"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
 )
 
 // ClientConfig represents a client config file.

@@ -18,9 +18,9 @@ import (
 	enumspb "go.temporal.io/api/enums/v1"
 	failurepb "go.temporal.io/api/failure/v1"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 // HandlerUnfinishedPolicy actions taken if a workflow completes with running handlers.
@@ -28,17 +28,17 @@ import (
 // Policy defining actions taken when a workflow exits while update or signal handlers are running.
 // The workflow exit may be due to successful return, cancellation, or continue-as-new
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.HandlerUnfinishedPolicy]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.HandlerUnfinishedPolicy]
 type HandlerUnfinishedPolicy int
 
 const (
 	// WarnAndAbandon issues a warning in addition to abandoning.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.HandlerUnfinishedPolicyWarnAndAbandon]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.HandlerUnfinishedPolicyWarnAndAbandon]
 	HandlerUnfinishedPolicyWarnAndAbandon HandlerUnfinishedPolicy = iota
 	// ABANDON abandons the handler.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.HandlerUnfinishedPolicyAbandon]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.HandlerUnfinishedPolicyAbandon]
 	HandlerUnfinishedPolicyAbandon
 )
 
@@ -46,7 +46,7 @@ const (
 //
 // NOTE: Experimental
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.VersioningBehavior]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.VersioningBehavior]
 type VersioningBehavior int
 
 const (
@@ -54,18 +54,18 @@ const (
 	//  A default [VersioningBehaviorUnspecified] policy forces
 	// every workflow to explicitly set a [VersioningBehavior] different from [VersioningBehaviorUnspecified].
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.VersioningBehaviorUnspecified]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.VersioningBehaviorUnspecified]
 	VersioningBehaviorUnspecified VersioningBehavior = iota
 
 	// VersioningBehaviorPinned - Workflow should be pinned to the current Build ID until manually moved.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.VersioningBehaviorPinned]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.VersioningBehaviorPinned]
 	VersioningBehaviorPinned
 
 	// VersioningBehaviorAutoUpgrade - Workflow automatically moves to the latest
 	// version (default Build ID of the task queue) when the next task is dispatched.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.VersioningBehaviorAutoUpgrade]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.VersioningBehaviorAutoUpgrade]
 	VersioningBehaviorAutoUpgrade
 )
 
@@ -74,7 +74,7 @@ const (
 //
 // NOTE: Experimental
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NexusOperationCancellationType]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NexusOperationCancellationType]
 type NexusOperationCancellationType int
 
 const (
@@ -320,14 +320,14 @@ type (
 
 	// WorkflowType identifies a workflow type.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.Type]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.Type]
 	WorkflowType struct {
 		Name string
 	}
 
 	// WorkflowExecution details.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.Execution]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.Execution]
 	WorkflowExecution struct {
 		ID    string
 		RunID string
@@ -345,7 +345,7 @@ type (
 	// The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 	// subjected to change in the future.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.ChildWorkflowOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.ChildWorkflowOptions]
 	ChildWorkflowOptions struct {
 		// Namespace of the child workflow.
 		//
@@ -473,7 +473,7 @@ type (
 
 	// RegisterWorkflowOptions consists of options for registering a workflow
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.RegisterOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.RegisterOptions]
 	RegisterWorkflowOptions struct {
 		// Custom name for this workflow instead of the function name.
 		//
@@ -494,14 +494,14 @@ type (
 
 	// LoadDynamicRuntimeOptionsDetails is used as input to the LoadDynamicRuntimeOptions callback for dynamic workflows
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.LoadDynamicRuntimeOptionsDetails]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.LoadDynamicRuntimeOptionsDetails]
 	LoadDynamicRuntimeOptionsDetails struct {
 		WorkflowType WorkflowType
 	}
 
 	// DynamicRegisterWorkflowOptions consists of options for registering a dynamic workflow
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.DynamicRegisterOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.DynamicRegisterOptions]
 	DynamicRegisterWorkflowOptions struct {
 		// Allows dynamic options to be loaded for a workflow.
 		LoadDynamicRuntimeOptions func(details LoadDynamicRuntimeOptionsDetails) (DynamicRuntimeWorkflowOptions, error)
@@ -512,7 +512,7 @@ type (
 
 	// DynamicRuntimeWorkflowOptions are options for a dynamic workflow.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.DynamicRuntimeOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.DynamicRuntimeOptions]
 	DynamicRuntimeWorkflowOptions struct {
 		// Optional: Provides a Versioning Behavior to workflows of this type. It is required
 		// when WorkerOptions does not specify [DeploymentOptions.DefaultVersioningBehavior],
@@ -531,7 +531,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SignalChannelOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SignalChannelOptions]
 	SignalChannelOptions struct {
 		// Description is a short description for this signal.
 		//
@@ -543,7 +543,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.QueryHandlerOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.QueryHandlerOptions]
 	QueryHandlerOptions struct {
 		// Description is a short description for this query.
 		//
@@ -553,7 +553,7 @@ type (
 
 	// UpdateHandlerOptions consists of options for executing a named workflow update.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.UpdateHandlerOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.UpdateHandlerOptions]
 	UpdateHandlerOptions struct {
 		// Validator is an optional (i.e. can be left nil) func with exactly the
 		// same type signature as the required update handler func but returning
@@ -579,7 +579,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.TimerOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.TimerOptions]
 	TimerOptions struct {
 		// Summary is a simple string identifying this timer. While it can be
 		// normal text, it is best to treat as a timer ID. This value will be
@@ -593,7 +593,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.AwaitOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.AwaitOptions]
 	AwaitOptions struct {
 		// Timeout is the await timeout if the await condition is not met.
 		//
@@ -609,7 +609,7 @@ type (
 // Await blocks the calling thread until condition() returns true
 // Returns CanceledError if the ctx is canceled.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.Await]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.Await]
 func Await(ctx Context, condition func() bool) error {
 	assertNotInReadOnlyState(ctx)
 	state := getState(ctx)
@@ -656,7 +656,7 @@ func (wc *workflowEnvironmentInterceptor) awaitWithOptions(ctx Context, options 
 // AwaitWithTimeout blocks the calling thread until condition() returns true
 // Returns ok equals to false if timed out and err equals to CanceledError if the ctx is canceled.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.AwaitWithTimeout]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.AwaitWithTimeout]
 func AwaitWithTimeout(ctx Context, timeout time.Duration, condition func() bool) (ok bool, err error) {
 	assertNotInReadOnlyState(ctx)
 	state := getState(ctx)
@@ -671,7 +671,7 @@ func (wc *workflowEnvironmentInterceptor) AwaitWithTimeout(ctx Context, timeout 
 // AwaitWithOptions blocks the calling thread until condition() returns true
 // Returns ok equals to false if timed out and err equals to CanceledError if the ctx is canceled.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.AwaitWithOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.AwaitWithOptions]
 func AwaitWithOptions(ctx Context, options AwaitOptions, condition func() bool) (ok bool, err error) {
 	assertNotInReadOnlyState(ctx)
 	state := getState(ctx)
@@ -684,7 +684,7 @@ func (wc *workflowEnvironmentInterceptor) AwaitWithOptions(ctx Context, options 
 
 // NewChannel create new Channel instance
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewChannel]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewChannel]
 func NewChannel(ctx Context) Channel {
 	state := getState(ctx)
 	state.dispatcher.channelSequence++
@@ -694,7 +694,7 @@ func NewChannel(ctx Context) Channel {
 // NewNamedChannel create new Channel instance with a given human readable name.
 // Name appears in stack traces that are blocked on this channel.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewNamedChannel]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewNamedChannel]
 func NewNamedChannel(ctx Context, name string) Channel {
 	env := getWorkflowEnvironment(ctx)
 	return &channelImpl{name: name, dataConverter: getDataConverterFromWorkflowContext(ctx), env: env}
@@ -702,7 +702,7 @@ func NewNamedChannel(ctx Context, name string) Channel {
 
 // NewBufferedChannel create new buffered Channel instance
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewBufferedChannel]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewBufferedChannel]
 func NewBufferedChannel(ctx Context, size int) Channel {
 	env := getWorkflowEnvironment(ctx)
 	return &channelImpl{size: size, dataConverter: getDataConverterFromWorkflowContext(ctx), env: env}
@@ -711,7 +711,7 @@ func NewBufferedChannel(ctx Context, size int) Channel {
 // NewNamedBufferedChannel create new BufferedChannel instance with a given human readable name.
 // Name appears in stack traces that are blocked on this Channel.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewNamedBufferedChannel]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewNamedBufferedChannel]
 func NewNamedBufferedChannel(ctx Context, name string, size int) Channel {
 	env := getWorkflowEnvironment(ctx)
 	return &channelImpl{name: name, size: size, dataConverter: getDataConverterFromWorkflowContext(ctx), env: env}
@@ -719,7 +719,7 @@ func NewNamedBufferedChannel(ctx Context, name string, size int) Channel {
 
 // NewSelector creates a new Selector instance.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewSelector]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewSelector]
 func NewSelector(ctx Context) Selector {
 	state := getState(ctx)
 	state.dispatcher.selectorSequence++
@@ -729,7 +729,7 @@ func NewSelector(ctx Context) Selector {
 // NewNamedSelector creates a new Selector instance with a given human readable name.
 // Name appears in stack traces that are blocked on this Selector.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewNamedSelector]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewNamedSelector]
 func NewNamedSelector(ctx Context, name string) Selector {
 	assertNotInReadOnlyState(ctx)
 	return &selectorImpl{name: name}
@@ -737,7 +737,7 @@ func NewNamedSelector(ctx Context, name string) Selector {
 
 // NewWaitGroup creates a new WaitGroup instance.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewWaitGroup]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewWaitGroup]
 func NewWaitGroup(ctx Context) WaitGroup {
 	assertNotInReadOnlyState(ctx)
 	f, s := NewFuture(ctx)
@@ -746,7 +746,7 @@ func NewWaitGroup(ctx Context) WaitGroup {
 
 // NewMutex creates a new Mutex instance.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewMutex]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewMutex]
 func NewMutex(ctx Context) Mutex {
 	assertNotInReadOnlyState(ctx)
 	return &mutexImpl{}
@@ -754,7 +754,7 @@ func NewMutex(ctx Context) Mutex {
 
 // NewSemaphore creates a new Semaphore instance with an initial weight.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewSemaphore]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewSemaphore]
 func NewSemaphore(ctx Context, n int64) Semaphore {
 	assertNotInReadOnlyState(ctx)
 	return &semaphoreImpl{size: n}
@@ -762,7 +762,7 @@ func NewSemaphore(ctx Context, n int64) Semaphore {
 
 // Go creates a new coroutine. It has similar semantic to goroutine in a context of the workflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.Go]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.Go]
 func Go(ctx Context, f func(ctx Context)) {
 	assertNotInReadOnlyState(ctx)
 	state := getState(ctx)
@@ -773,7 +773,7 @@ func Go(ctx Context, f func(ctx Context)) {
 // It has similar semantic to goroutine in a context of the workflow.
 // Name appears in stack traces that are blocked on this Channel.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GoNamed]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GoNamed]
 func GoNamed(ctx Context, name string, f func(ctx Context)) {
 	assertNotInReadOnlyState(ctx)
 	state := getState(ctx)
@@ -782,7 +782,7 @@ func GoNamed(ctx Context, name string, f func(ctx Context)) {
 
 // NewFuture creates a new future as well as associated Settable that is used to set its value.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewFuture]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewFuture]
 func NewFuture(ctx Context) (Future, Settable) {
 	assertNotInReadOnlyState(ctx)
 	impl := &futureImpl{channel: NewChannel(ctx).(*channelImpl)}
@@ -889,7 +889,7 @@ func (wc *workflowEnvironmentInterceptor) Init(outbound WorkflowOutboundIntercep
 //
 // ExecuteActivity returns Future with activity result or failure.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.ExecuteActivity]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.ExecuteActivity]
 func ExecuteActivity(ctx Context, activity interface{}, args ...interface{}) Future {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1013,7 +1013,7 @@ func (wc *workflowEnvironmentInterceptor) ExecuteActivity(ctx Context, typeName 
 //
 // ExecuteLocalActivity returns Future with local activity result or failure.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.ExecuteLocalActivity]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.ExecuteLocalActivity]
 func ExecuteLocalActivity(ctx Context, activity interface{}, args ...interface{}) Future {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1205,7 +1205,7 @@ func (wc *workflowEnvironmentInterceptor) scheduleLocalActivity(ctx Context, par
 //
 // ExecuteChildWorkflow returns ChildWorkflowFuture.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.ExecuteChildWorkflow]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.ExecuteChildWorkflow]
 func ExecuteChildWorkflow(ctx Context, childWorkflow interface{}, args ...interface{}) ChildWorkflowFuture {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1306,7 +1306,7 @@ func (wc *workflowEnvironmentInterceptor) ExecuteChildWorkflow(ctx Context, chil
 
 // WorkflowInfo information about currently executing workflow
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.Info]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.Info]
 type WorkflowInfo struct {
 	WorkflowExecution WorkflowExecution
 	// The original runID before resetting. Using it instead of current runID can make workflow decision deterministic after reset. See also FirstRunId
@@ -1359,7 +1359,7 @@ type WorkflowInfo struct {
 
 // UpdateInfo information about a currently running update
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.UpdateInfo]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.UpdateInfo]
 type UpdateInfo struct {
 	// ID of the update
 	ID string
@@ -1406,7 +1406,7 @@ func (wInfo *WorkflowInfo) GetContinueAsNewSuggested() bool {
 
 // GetWorkflowInfo extracts info of a current workflow from a context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetInfo]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetInfo]
 func GetWorkflowInfo(ctx Context) *WorkflowInfo {
 	i := getWorkflowOutboundInterceptor(ctx)
 	return i.GetInfo(ctx)
@@ -1416,7 +1416,7 @@ func (wc *workflowEnvironmentInterceptor) GetInfo(ctx Context) *WorkflowInfo {
 	return wc.env.WorkflowInfo()
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetTypedSearchAttributes]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetTypedSearchAttributes]
 func GetTypedSearchAttributes(ctx Context) SearchAttributes {
 	i := getWorkflowOutboundInterceptor(ctx)
 	return i.GetTypedSearchAttributes(ctx)
@@ -1428,7 +1428,7 @@ func (wc *workflowEnvironmentInterceptor) GetTypedSearchAttributes(ctx Context) 
 
 // GetUpdateInfo extracts info of a currently running update from a context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetCurrentUpdateInfo]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetCurrentUpdateInfo]
 func GetCurrentUpdateInfo(ctx Context) *UpdateInfo {
 	i := getWorkflowOutboundInterceptor(ctx)
 	return i.GetCurrentUpdateInfo(ctx)
@@ -1444,7 +1444,7 @@ func (wc *workflowEnvironmentInterceptor) GetCurrentUpdateInfo(ctx Context) *Upd
 
 // GetLogger returns a logger to be used in workflow's context
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetLogger]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetLogger]
 func GetLogger(ctx Context) log.Logger {
 	i := getWorkflowOutboundInterceptor(ctx)
 	return i.GetLogger(ctx)
@@ -1463,7 +1463,7 @@ func (wc *workflowEnvironmentInterceptor) GetLogger(ctx Context) log.Logger {
 
 // GetMetricsHandler returns a metrics handler to be used in workflow's context
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetMetricsHandler]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetMetricsHandler]
 func GetMetricsHandler(ctx Context) metrics.Handler {
 	i := getWorkflowOutboundInterceptor(ctx)
 	return i.GetMetricsHandler(ctx)
@@ -1476,7 +1476,7 @@ func (wc *workflowEnvironmentInterceptor) GetMetricsHandler(ctx Context) metrics
 // Now returns the current time in UTC. It corresponds to the time when the workflow task is started or replayed.
 // Workflow needs to use this method to get the wall clock time instead of the one from the golang library.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.Now]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.Now]
 func Now(ctx Context) time.Time {
 	i := getWorkflowOutboundInterceptor(ctx)
 	return i.Now(ctx).UTC()
@@ -1493,7 +1493,7 @@ func (wc *workflowEnvironmentInterceptor) Now(ctx Context) time.Time {
 //
 // To be able to set options like timer summary, use [NewTimerWithOptions].
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewTimer]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewTimer]
 func NewTimer(ctx Context, d time.Duration) Future {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1505,7 +1505,7 @@ func NewTimer(ctx Context, d time.Duration) Future {
 // can cancel the pending timer by cancel the Context (using context from workflow.WithCancel(ctx)) and that will cancel
 // the timer. After timer is canceled, the returned Future become ready, and Future.Get() will return *CanceledError.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewTimerWithOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewTimerWithOptions]
 func NewTimerWithOptions(ctx Context, d time.Duration, options TimerOptions) Future {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1560,7 +1560,7 @@ func (wc *workflowEnvironmentInterceptor) NewTimerWithOptions(
 // reasons the ctx could be canceled: 1) your workflow code cancel the ctx (with workflow.WithCancel(ctx));
 // 2) your workflow itself is canceled by external request.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.Sleep]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.Sleep]
 func Sleep(ctx Context, d time.Duration) (err error) {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1584,7 +1584,7 @@ func (wc *workflowEnvironmentInterceptor) Sleep(ctx Context, d time.Duration) (e
 //
 // RequestCancelExternalWorkflow return Future with failure or empty success result.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.RequestCancelExternalWorkflow]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.RequestCancelExternalWorkflow]
 func RequestCancelExternalWorkflow(ctx Context, workflowID, runID string) Future {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1626,7 +1626,7 @@ func (wc *workflowEnvironmentInterceptor) RequestCancelExternalWorkflow(ctx Cont
 //
 // SignalExternalWorkflow return Future with failure or empty success result.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SignalExternalWorkflow]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SignalExternalWorkflow]
 func SignalExternalWorkflow(ctx Context, workflowID, runID, signalName string, arg interface{}) Future {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1721,7 +1721,7 @@ func signalExternalWorkflow(ctx Context, workflowID, runID, signalName string, a
 //
 // Deprecated: Use [UpsertTypedSearchAttributes] instead.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.UpsertSearchAttributes]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.UpsertSearchAttributes]
 //
 // [Visibility]: https://docs.temporal.io/visibility
 func UpsertSearchAttributes(ctx Context, attributes map[string]interface{}) error {
@@ -1737,7 +1737,7 @@ func (wc *workflowEnvironmentInterceptor) UpsertSearchAttributes(ctx Context, at
 	return wc.env.UpsertSearchAttributes(attributes)
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.UpsertTypedSearchAttributes]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.UpsertTypedSearchAttributes]
 func UpsertTypedSearchAttributes(ctx Context, attributes ...SearchAttributeUpdate) error {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1781,7 +1781,7 @@ func (wc *workflowEnvironmentInterceptor) UpsertTypedSearchAttributes(ctx Contex
 //
 // This is only supported with Temporal Server 1.18+
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.UpsertMemo]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.UpsertMemo]
 func UpsertMemo(ctx Context, memo map[string]interface{}) error {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1796,7 +1796,7 @@ func (wc *workflowEnvironmentInterceptor) UpsertMemo(ctx Context, memo map[strin
 // The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 // subjected to change in the future.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithChildOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithChildOptions]
 func WithChildWorkflowOptions(ctx Context, cwo ChildWorkflowOptions) Context {
 	ctx1 := setWorkflowEnvOptionsIfNotExist(ctx)
 	wfOptions := getWorkflowEnvOptions(ctx1)
@@ -1828,7 +1828,7 @@ func WithChildWorkflowOptions(ctx Context, cwo ChildWorkflowOptions) Context {
 
 // GetChildWorkflowOptions returns all workflow options present on the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetChildWorkflowOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetChildWorkflowOptions]
 func GetChildWorkflowOptions(ctx Context) ChildWorkflowOptions {
 	opts := getWorkflowEnvOptions(ctx)
 	if opts == nil {
@@ -1858,7 +1858,7 @@ func GetChildWorkflowOptions(ctx Context) ChildWorkflowOptions {
 
 // WithWorkflowNamespace adds a namespace to the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithWorkflowNamespace]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithWorkflowNamespace]
 func WithWorkflowNamespace(ctx Context, name string) Context {
 	ctx1 := setWorkflowEnvOptionsIfNotExist(ctx)
 	getWorkflowEnvOptions(ctx1).Namespace = name
@@ -1867,7 +1867,7 @@ func WithWorkflowNamespace(ctx Context, name string) Context {
 
 // WithWorkflowTaskQueue adds a task queue to the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithWorkflowTaskQueue]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithWorkflowTaskQueue]
 func WithWorkflowTaskQueue(ctx Context, name string) Context {
 	if name == "" {
 		panic("empty task queue name")
@@ -1879,7 +1879,7 @@ func WithWorkflowTaskQueue(ctx Context, name string) Context {
 
 // WithWorkflowID adds a workflowID to the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithWorkflowID]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithWorkflowID]
 func WithWorkflowID(ctx Context, workflowID string) Context {
 	ctx1 := setWorkflowEnvOptionsIfNotExist(ctx)
 	getWorkflowEnvOptions(ctx1).WorkflowID = workflowID
@@ -1897,7 +1897,7 @@ func WithTypedSearchAttributes(ctx Context, searchAttributes SearchAttributes) C
 // The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 // subjected to change in the future.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithWorkflowRunTimeout]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithWorkflowRunTimeout]
 func WithWorkflowRunTimeout(ctx Context, d time.Duration) Context {
 	ctx1 := setWorkflowEnvOptionsIfNotExist(ctx)
 	getWorkflowEnvOptions(ctx1).WorkflowRunTimeout = d
@@ -1908,7 +1908,7 @@ func WithWorkflowRunTimeout(ctx Context, d time.Duration) Context {
 // The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 // subjected to change in the future.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithWorkflowTaskTimeout]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithWorkflowTaskTimeout]
 func WithWorkflowTaskTimeout(ctx Context, d time.Duration) Context {
 	ctx1 := setWorkflowEnvOptionsIfNotExist(ctx)
 	getWorkflowEnvOptions(ctx1).WorkflowTaskTimeout = d
@@ -1917,7 +1917,7 @@ func WithWorkflowTaskTimeout(ctx Context, d time.Duration) Context {
 
 // WithDataConverter adds DataConverter to the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithDataConverter]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithDataConverter]
 func WithDataConverter(ctx Context, dc converter.DataConverter) Context {
 	if dc == nil {
 		panic("data converter is nil for WithDataConverter")
@@ -1929,7 +1929,7 @@ func WithDataConverter(ctx Context, dc converter.DataConverter) Context {
 
 // WithPriority adds a priority to the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithWorkflowPriority]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithWorkflowPriority]
 func WithWorkflowPriority(ctx Context, priority Priority) Context {
 	ctx1 := setWorkflowEnvOptionsIfNotExist(ctx)
 	getWorkflowEnvOptions(ctx1).Priority = convertToPBPriority(priority)
@@ -1940,7 +1940,7 @@ func WithWorkflowPriority(ctx Context, priority Priority) Context {
 // ContinueAsNewError with NewContinueAsNewError.
 // WARNING: Worker versioning is currently experimental
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithWorkflowVersioningIntent]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithWorkflowVersioningIntent]
 func WithWorkflowVersioningIntent(ctx Context, intent VersioningIntent) Context {
 	ctx1 := setWorkflowEnvOptionsIfNotExist(ctx)
 	getWorkflowEnvOptions(ctx1).VersioningIntent = intent
@@ -1956,7 +1956,7 @@ func withContextPropagators(ctx Context, contextPropagators []ContextPropagator)
 
 // GetSignalChannel returns channel corresponding to the signal name.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetSignalChannel]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetSignalChannel]
 func GetSignalChannel(ctx Context, signalName string) ReceiveChannel {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -1967,7 +1967,7 @@ func GetSignalChannel(ctx Context, signalName string) ReceiveChannel {
 //
 // NOTE: Experimental
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetSignalChannelWithOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetSignalChannelWithOptions]
 func GetSignalChannelWithOptions(ctx Context, signalName string, options SignalChannelOptions) ReceiveChannel {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -2055,7 +2055,7 @@ func (b EncodedValue) HasValue() bool {
 //	       ....
 //	}
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SideEffect]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SideEffect]
 func SideEffect(ctx Context, f func(ctx Context) interface{}) converter.EncodedValue {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -2100,7 +2100,7 @@ func (wc *workflowEnvironmentInterceptor) SideEffect(ctx Context, f func(ctx Con
 //
 // One good use case of MutableSideEffect() is to access dynamically changing config without breaking determinism.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.MutableSideEffect]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.MutableSideEffect]
 func MutableSideEffect(ctx Context, id string, f func(ctx Context) interface{}, equals func(a, b interface{}) bool) converter.EncodedValue {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -2119,7 +2119,7 @@ func (wc *workflowEnvironmentInterceptor) MutableSideEffect(ctx Context, id stri
 
 // DefaultVersion is a version returned by GetVersion for code that wasn't versioned before
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.DefaultVersion], [github.com/bubo-squared/temporal-go-sdk/workflow.Version]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.DefaultVersion], [github.com/bubo-squared/temporal-sdk-go/workflow.Version]
 const DefaultVersion Version = -1
 
 // TemporalChangeVersion is used as search attributes key to find workflows with specific change version.
@@ -2191,7 +2191,7 @@ const TemporalChangeVersion = "TemporalChangeVersion"
 //	  err = workflow.ExecuteActivity(ctx, qux, data).Get(ctx, nil)
 //	}
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetVersion]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetVersion]
 func GetVersion(ctx Context, changeID string, minSupported, maxSupported Version) Version {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -2244,7 +2244,7 @@ func (wc *workflowEnvironmentInterceptor) GetVersion(ctx Context, changeID strin
 //
 // See [SetQueryHandlerWithOptions] to set additional options.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SetQueryHandler]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SetQueryHandler]
 func SetQueryHandler(ctx Context, queryType string, handler interface{}) error {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -2256,7 +2256,7 @@ func SetQueryHandler(ctx Context, queryType string, handler interface{}) error {
 //
 // NOTE: Experimental
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SetQueryHandlerWithOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SetQueryHandlerWithOptions]
 func SetQueryHandlerWithOptions(ctx Context, queryType string, handler interface{}, options QueryHandlerOptions) error {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -2302,7 +2302,7 @@ func (wc *workflowEnvironmentInterceptor) SetQueryHandlerWithOptions(
 // handlers must be deterministic and can observe workflow state but must not
 // mutate workflow state in any way.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SetUpdateHandlerWithOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SetUpdateHandlerWithOptions]
 func SetUpdateHandler(ctx Context, updateName string, handler interface{}, opts UpdateHandlerOptions) error {
 	assertNotInReadOnlyState(ctx)
 	i := getWorkflowOutboundInterceptor(ctx)
@@ -2331,7 +2331,7 @@ func (wc *workflowEnvironmentInterceptor) SetUpdateHandler(ctx Context, name str
 // want to make sure it proceed only when that action succeed then it should panic on that failure. Panic raised from a
 // workflow causes workflow task to fail and temporal server will rescheduled later to retry.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.IsReplaying]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.IsReplaying]
 func IsReplaying(ctx Context) bool {
 	i := getWorkflowOutboundInterceptor(ctx)
 	return i.IsReplaying(ctx)
@@ -2347,7 +2347,7 @@ func (wc *workflowEnvironmentInterceptor) IsReplaying(ctx Context) bool {
 // available when next run starts.
 // This HasLastCompletionResult() checks if there is such data available passing down from previous successful run.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.HasLastCompletionResult]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.HasLastCompletionResult]
 func HasLastCompletionResult(ctx Context) bool {
 	i := getWorkflowOutboundInterceptor(ctx)
 	return i.HasLastCompletionResult(ctx)
@@ -2368,7 +2368,7 @@ func (wc *workflowEnvironmentInterceptor) HasLastCompletionResult(ctx Context) b
 // of existing values may result in unexpected behavior similar to
 // json.Unmarshal.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetLastCompletionResult]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetLastCompletionResult]
 func GetLastCompletionResult(ctx Context, d ...interface{}) error {
 	i := getWorkflowOutboundInterceptor(ctx)
 	return i.GetLastCompletionResult(ctx, d...)
@@ -2389,7 +2389,7 @@ func (wc *workflowEnvironmentInterceptor) GetLastCompletionResult(ctx Context, d
 //
 // See TestWorkflowEnvironment.SetLastError() for unit test support.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetLastError]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetLastError]
 func GetLastError(ctx Context) error {
 	i := getWorkflowOutboundInterceptor(ctx)
 	return i.GetLastError(ctx)
@@ -2410,7 +2410,7 @@ func (*workflowEnvironmentInterceptor) mustEmbedWorkflowOutboundInterceptorBase(
 // The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 // subjected to change in the future.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithActivityOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithActivityOptions]
 func WithActivityOptions(ctx Context, options ActivityOptions) Context {
 	ctx1 := setActivityParametersIfNotExist(ctx)
 	eap := getActivityOptions(ctx1)
@@ -2436,7 +2436,7 @@ func WithActivityOptions(ctx Context, options ActivityOptions) Context {
 // The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 // subjected to change in the future.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithLocalActivityOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithLocalActivityOptions]
 func WithLocalActivityOptions(ctx Context, options LocalActivityOptions) Context {
 	ctx1 := setLocalActivityParametersIfNotExist(ctx)
 	opts := getLocalActivityOptions(ctx1)
@@ -2466,7 +2466,7 @@ func applyRetryPolicyDefaultsForLocalActivity(policy *RetryPolicy) *RetryPolicy 
 
 // WithTaskQueue adds a task queue to the copy of the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithTaskQueue]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithTaskQueue]
 func WithTaskQueue(ctx Context, name string) Context {
 	ctx1 := setActivityParametersIfNotExist(ctx)
 	getActivityOptions(ctx1).TaskQueueName = name
@@ -2475,7 +2475,7 @@ func WithTaskQueue(ctx Context, name string) Context {
 
 // GetActivityOptions returns all activity options present on the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetActivityOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetActivityOptions]
 func GetActivityOptions(ctx Context) ActivityOptions {
 	opts := getActivityOptions(ctx)
 	if opts == nil {
@@ -2499,7 +2499,7 @@ func GetActivityOptions(ctx Context) ActivityOptions {
 
 // GetLocalActivityOptions returns all local activity options present on the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetLocalActivityOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetLocalActivityOptions]
 func GetLocalActivityOptions(ctx Context) LocalActivityOptions {
 	opts := getLocalActivityOptions(ctx)
 	if opts == nil {
@@ -2517,7 +2517,7 @@ func GetLocalActivityOptions(ctx Context) LocalActivityOptions {
 // The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 // subjected to change in the future.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithScheduleToCloseTimeout]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithScheduleToCloseTimeout]
 func WithScheduleToCloseTimeout(ctx Context, d time.Duration) Context {
 	ctx1 := setActivityParametersIfNotExist(ctx)
 	getActivityOptions(ctx1).ScheduleToCloseTimeout = d
@@ -2528,7 +2528,7 @@ func WithScheduleToCloseTimeout(ctx Context, d time.Duration) Context {
 // The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 // subjected to change in the future.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithScheduleToStartTimeout]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithScheduleToStartTimeout]
 func WithScheduleToStartTimeout(ctx Context, d time.Duration) Context {
 	ctx1 := setActivityParametersIfNotExist(ctx)
 	getActivityOptions(ctx1).ScheduleToStartTimeout = d
@@ -2539,7 +2539,7 @@ func WithScheduleToStartTimeout(ctx Context, d time.Duration) Context {
 // The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 // subjected to change in the future.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithStartToCloseTimeout]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithStartToCloseTimeout]
 func WithStartToCloseTimeout(ctx Context, d time.Duration) Context {
 	ctx1 := setActivityParametersIfNotExist(ctx)
 	getActivityOptions(ctx1).StartToCloseTimeout = d
@@ -2550,7 +2550,7 @@ func WithStartToCloseTimeout(ctx Context, d time.Duration) Context {
 // The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 // subjected to change in the future.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithHeartbeatTimeout]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithHeartbeatTimeout]
 func WithHeartbeatTimeout(ctx Context, d time.Duration) Context {
 	ctx1 := setActivityParametersIfNotExist(ctx)
 	getActivityOptions(ctx1).HeartbeatTimeout = d
@@ -2559,7 +2559,7 @@ func WithHeartbeatTimeout(ctx Context, d time.Duration) Context {
 
 // WithWaitForCancellation adds wait for the cancellation to the copy of the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithWaitForCancellation]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithWaitForCancellation]
 func WithWaitForCancellation(ctx Context, wait bool) Context {
 	ctx1 := setActivityParametersIfNotExist(ctx)
 	getActivityOptions(ctx1).WaitForCancellation = wait
@@ -2568,7 +2568,7 @@ func WithWaitForCancellation(ctx Context, wait bool) Context {
 
 // WithRetryPolicy adds retry policy to the copy of the context
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithRetryPolicy]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithRetryPolicy]
 func WithRetryPolicy(ctx Context, retryPolicy RetryPolicy) Context {
 	ctx1 := setActivityParametersIfNotExist(ctx)
 	getActivityOptions(ctx1).RetryPolicy = convertToPBRetryPolicy(&retryPolicy)
@@ -2577,7 +2577,7 @@ func WithRetryPolicy(ctx Context, retryPolicy RetryPolicy) Context {
 
 // WithPriority adds priority to the copy of the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.WithPriority]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.WithPriority]
 func WithPriority(ctx Context, priority Priority) Context {
 	ctx1 := setActivityParametersIfNotExist(ctx)
 	getActivityOptions(ctx1).Priority = convertToPBPriority(priority)
@@ -2619,7 +2619,7 @@ func convertToPBPriority(priority Priority) *commonpb.Priority {
 	// If the priority only contains default values, return nil instead
 	// - since there's no need to send the default values to the server.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.Priority]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/temporal.Priority]
 	var defaultPriority Priority
 	if priority == defaultPriority {
 		return nil
@@ -2674,14 +2674,14 @@ func DeterministicKeysFunc[K comparable, V any](m map[K]V, cmp func(a K, b K) in
 	return r
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.AllHandlersFinished]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.AllHandlersFinished]
 func AllHandlersFinished(ctx Context) bool {
 	return len(getWorkflowEnvOptions(ctx).getRunningUpdateHandles()) == 0
 }
 
 // NexusOperationOptions are options for starting a Nexus Operation from a Workflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NexusOperationOptions]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NexusOperationOptions]
 type NexusOperationOptions struct {
 	// ScheduleToCloseTimeout - The end to end timeout for the Nexus Operation
 	//
@@ -2706,7 +2706,7 @@ type NexusOperationOptions struct {
 
 // NexusOperationExecution is the result of NexusOperationFuture.GetNexusOperationExecution.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NexusOperationExecution]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NexusOperationExecution]
 type NexusOperationExecution struct {
 	// Operation token as set by the Operation's handler. May be empty if the operation hasn't started yet or completed
 	// synchronously.
@@ -2715,7 +2715,7 @@ type NexusOperationExecution struct {
 
 // NexusOperationFuture represents the result of a Nexus Operation.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NexusOperationFuture]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NexusOperationFuture]
 type NexusOperationFuture interface {
 	Future
 	// GetNexusOperationExecution returns a future that is resolved when the operation reaches the STARTED state.
@@ -2752,7 +2752,7 @@ type nexusClient struct {
 
 // Create a [NexusClient] from an endpoint name and a service name.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewNexusClient]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.NewNexusClient]
 func NewNexusClient(endpoint, service string) NexusClient {
 	if endpoint == "" {
 		panic("endpoint must not be empty")

@@ -11,13 +11,13 @@ import (
 	"go.temporal.io/api/common/v1"
 	"go.temporal.io/api/serviceerror"
 	"go.temporal.io/api/workflowservice/v1"
-	"github.com/bubo-squared/temporal-go-sdk/internal"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
 
 	"github.com/google/uuid"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"github.com/bubo-squared/temporal-go-sdk/client"
-	"github.com/bubo-squared/temporal-go-sdk/worker"
+	"github.com/bubo-squared/temporal-sdk-go/client"
+	"github.com/bubo-squared/temporal-sdk-go/worker"
 )
 
 type WorkerVersioningTestSuite struct {

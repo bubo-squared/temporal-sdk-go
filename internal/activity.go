@@ -8,22 +8,22 @@ import (
 	commonpb "go.temporal.io/api/common/v1"
 	"go.temporal.io/api/workflowservice/v1"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 type (
 	// ActivityType identifies an activity type.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.Type]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.Type]
 	ActivityType struct {
 		Name string
 	}
 
 	// ActivityInfo contains information about a currently executing activity.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.Info]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.Info]
 	ActivityInfo struct {
 		TaskToken              []byte
 		WorkflowType           *WorkflowType
@@ -53,7 +53,7 @@ type (
 
 	// RegisterActivityOptions consists of options for registering an activity.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.RegisterOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.RegisterOptions]
 	RegisterActivityOptions struct {
 		// When an activity is a function the name is an actual activity type name.
 		// When an activity is part of a structure then each member of the structure becomes an activity with
@@ -75,7 +75,7 @@ type (
 	// The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 	// subjected to change in the future.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.ActivityOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.ActivityOptions]
 	ActivityOptions struct {
 		// TaskQueue - Name of the task queue that the activity needs to be scheduled on.
 		//
@@ -166,7 +166,7 @@ type (
 
 	// LocalActivityOptions stores local activity specific parameters that will be stored inside of a context.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.LocalActivityOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.LocalActivityOptions]
 	LocalActivityOptions struct {
 		// ScheduleToCloseTimeout - The end to end timeout for the local activity, including retries.
 		// At least one of ScheduleToCloseTimeout or StartToCloseTimeout is required.
@@ -196,21 +196,21 @@ type (
 
 // GetActivityInfo returns information about the currently executing activity.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.GetInfo]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.GetInfo]
 func GetActivityInfo(ctx context.Context) ActivityInfo {
 	return getActivityOutboundInterceptor(ctx).GetInfo(ctx)
 }
 
 // HasHeartbeatDetails checks if there are heartbeat details from last attempt.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.HasHeartbeatDetails]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.HasHeartbeatDetails]
 func HasHeartbeatDetails(ctx context.Context) bool {
 	return getActivityOutboundInterceptor(ctx).HasHeartbeatDetails(ctx)
 }
 
 // IsActivity checks if the context is an activity context from a normal or local activity.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.IsActivity]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.IsActivity]
 func IsActivity(ctx context.Context) bool {
 	a := ctx.Value(activityInterceptorContextKey)
 	return a != nil
@@ -225,21 +225,21 @@ func IsActivity(ctx context.Context) bool {
 // Note: Values should not be reused for extraction here because merging on top
 // of existing values may result in unexpected behavior similar to json.Unmarshal.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.GetHeartbeatDetails]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.GetHeartbeatDetails]
 func GetHeartbeatDetails(ctx context.Context, d ...interface{}) error {
 	return getActivityOutboundInterceptor(ctx).GetHeartbeatDetails(ctx, d...)
 }
 
 // GetActivityLogger returns a logger that can be used in the activity.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.GetLogger]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.GetLogger]
 func GetActivityLogger(ctx context.Context) log.Logger {
 	return getActivityOutboundInterceptor(ctx).GetLogger(ctx)
 }
 
 // GetActivityMetricsHandler returns a metrics handler that can be used in the activity.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.GetMetricsHandler]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.GetMetricsHandler]
 func GetActivityMetricsHandler(ctx context.Context) metrics.Handler {
 	return getActivityOutboundInterceptor(ctx).GetMetricsHandler(ctx)
 }
@@ -249,7 +249,7 @@ func GetActivityMetricsHandler(ctx context.Context) metrics.Handler {
 // hits, the worker will cancel the activity context and then exit. The timeout can be defined by worker option: WorkerStopTimeout.
 // Use this channel to handle a graceful activity exit when the activity worker stops.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.GetWorkerStopChannel]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.GetWorkerStopChannel]
 func GetWorkerStopChannel(ctx context.Context) <-chan struct{} {
 	return getActivityOutboundInterceptor(ctx).GetWorkerStopChannel(ctx)
 }
@@ -263,7 +263,7 @@ func GetWorkerStopChannel(ctx context.Context) <-chan struct{} {
 // details - The details that you provided here can be seen in the workflow when it receives TimeoutError. You
 // can check error TimeoutType()/Details().
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.RecordHeartbeat]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.RecordHeartbeat]
 func RecordActivityHeartbeat(ctx context.Context, details ...interface{}) {
 	getActivityOutboundInterceptor(ctx).RecordHeartbeat(ctx, details...)
 }
@@ -271,7 +271,7 @@ func RecordActivityHeartbeat(ctx context.Context, details ...interface{}) {
 // GetClient returns a client that can be used to interact with the Temporal
 // service from an activity.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.GetClient]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/activity.GetClient]
 func GetClient(ctx context.Context) Client {
 	return getActivityOutboundInterceptor(ctx).GetClient(ctx)
 }

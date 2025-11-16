@@ -17,8 +17,8 @@ import (
 	taskqueuepb "go.temporal.io/api/taskqueue/v1"
 	workflowpb "go.temporal.io/api/workflow/v1"
 	"go.temporal.io/api/workflowservice/v1"
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 type (

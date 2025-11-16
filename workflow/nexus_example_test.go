@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/nexus-rpc/sdk-go/nexus"
-	"github.com/bubo-squared/temporal-go-sdk/workflow"
+	"github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 type MyInput struct{}

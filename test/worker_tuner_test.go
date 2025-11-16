@@ -4,11 +4,11 @@ import (
 	"context"
 	"testing"
 
-	"github.com/bubo-squared/temporal-go-sdk/worker"
+	"github.com/bubo-squared/temporal-sdk-go/worker"
 
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"github.com/bubo-squared/temporal-go-sdk/contrib/resourcetuner"
+	"github.com/bubo-squared/temporal-sdk-go/contrib/resourcetuner"
 )
 
 type WorkerTunerTestSuite struct {

@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/bubo-squared/temporal-go-sdk/workflow"
+	"github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 func TestIdempotencyKeyGeneration(t *testing.T) {

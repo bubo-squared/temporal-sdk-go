@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-sdk-go/client"
 )
 
 // MustLoadDefaultClientOptions invokes [LoadDefaultClientOptions] and panics on error.

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 // TestReporter is a log adapter for gomock.

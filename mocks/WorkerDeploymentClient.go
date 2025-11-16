@@ -9,7 +9,7 @@ package mocks
 import (
 	context "context"
 
-	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-sdk-go/client"
 
 	"github.com/stretchr/testify/mock"
 )

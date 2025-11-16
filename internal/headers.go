@@ -3,7 +3,7 @@ package internal
 import (
 	"context"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
 
 	commonpb "go.temporal.io/api/common/v1"
 )

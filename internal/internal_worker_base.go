@@ -17,13 +17,13 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/retry"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/retry"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/backoff"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	internallog "github.com/bubo-squared/temporal-go-sdk/internal/log"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/backoff"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	internallog "github.com/bubo-squared/temporal-sdk-go/internal/log"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 const (
@@ -43,7 +43,7 @@ var (
 	errStop                          = errors.New("worker stopping")
 	// ErrWorkerStopped is returned when the worker is stopped
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.ErrWorkerShutdown]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.ErrWorkerShutdown]
 	ErrWorkerShutdown = errors.New("worker is now shutdown")
 )
 

@@ -24,11 +24,11 @@ import (
 	"github.com/nexus-rpc/sdk-go/nexus"
 	"go.temporal.io/api/common/v1"
 	"go.temporal.io/api/enums/v1"
-	"github.com/bubo-squared/temporal-go-sdk/client"
-	"github.com/bubo-squared/temporal-go-sdk/internal"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	"github.com/bubo-squared/temporal-go-sdk/log"
-	"github.com/bubo-squared/temporal-go-sdk/workflow"
+	"github.com/bubo-squared/temporal-sdk-go/client"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/log"
+	"github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 // OperationInfo contains information about a currently executing Nexus operation.

@@ -9,7 +9,7 @@ package internalbindings
 
 import (
 	commonpb "go.temporal.io/api/common/v1"
-	"github.com/bubo-squared/temporal-go-sdk/internal"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
 )
 
 type (

@@ -1,6 +1,6 @@
 package workflow
 
-import "github.com/bubo-squared/temporal-go-sdk/internal"
+import "github.com/bubo-squared/temporal-sdk-go/internal"
 
 type (
 	// HeaderReader is an interface to read information from temporal headers

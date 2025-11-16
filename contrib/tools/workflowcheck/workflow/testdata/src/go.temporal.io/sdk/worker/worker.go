@@ -1,8 +1,8 @@
 package worker
 
 import (
-	"github.com/bubo-squared/temporal-go-sdk/activity"
-	"github.com/bubo-squared/temporal-go-sdk/workflow"
+	"github.com/bubo-squared/temporal-sdk-go/activity"
+	"github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 type Worker interface {

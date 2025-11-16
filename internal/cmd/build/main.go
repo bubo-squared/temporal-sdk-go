@@ -19,9 +19,9 @@ import (
 	_ "github.com/kisielk/errcheck/errcheck"
 	_ "honnef.co/go/tools/staticcheck"
 
-	"github.com/bubo-squared/temporal-go-sdk/client"
-	"github.com/bubo-squared/temporal-go-sdk/temporal"
-	"github.com/bubo-squared/temporal-go-sdk/testsuite"
+	"github.com/bubo-squared/temporal-sdk-go/client"
+	"github.com/bubo-squared/temporal-sdk-go/temporal"
+	"github.com/bubo-squared/temporal-sdk-go/testsuite"
 )
 
 func main() {

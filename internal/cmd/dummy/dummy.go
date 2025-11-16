@@ -2,14 +2,14 @@
 package main
 
 import (
-	_ "github.com/bubo-squared/temporal-go-sdk/activity"
-	_ "github.com/bubo-squared/temporal-go-sdk/client"
-	_ "github.com/bubo-squared/temporal-go-sdk/converter"
-	_ "github.com/bubo-squared/temporal-go-sdk/log"
-	_ "github.com/bubo-squared/temporal-go-sdk/temporal"
-	_ "github.com/bubo-squared/temporal-go-sdk/testsuite"
-	_ "github.com/bubo-squared/temporal-go-sdk/worker"
-	_ "github.com/bubo-squared/temporal-go-sdk/workflow"
+	_ "github.com/bubo-squared/temporal-sdk-go/activity"
+	_ "github.com/bubo-squared/temporal-sdk-go/client"
+	_ "github.com/bubo-squared/temporal-sdk-go/converter"
+	_ "github.com/bubo-squared/temporal-sdk-go/log"
+	_ "github.com/bubo-squared/temporal-sdk-go/temporal"
+	_ "github.com/bubo-squared/temporal-sdk-go/testsuite"
+	_ "github.com/bubo-squared/temporal-sdk-go/worker"
+	_ "github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 func main() {

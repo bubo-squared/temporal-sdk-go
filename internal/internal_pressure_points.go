@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 // ** This is for internal stress testing framework **

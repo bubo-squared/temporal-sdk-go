@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 // DefaultLogger is Logger implementation on top of standard log.Logger. It is used if logger is not specified.

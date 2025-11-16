@@ -3,7 +3,7 @@ package workflow
 import (
 	"time"
 
-	"github.com/bubo-squared/temporal-go-sdk/internal"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
 )
 
 type RegisterOptions struct{}

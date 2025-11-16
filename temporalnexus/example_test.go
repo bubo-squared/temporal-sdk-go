@@ -4,10 +4,10 @@ import (
 	"context"
 
 	"github.com/nexus-rpc/sdk-go/nexus"
-	"github.com/bubo-squared/temporal-go-sdk/client"
-	"github.com/bubo-squared/temporal-go-sdk/temporalnexus"
-	"github.com/bubo-squared/temporal-go-sdk/worker"
-	"github.com/bubo-squared/temporal-go-sdk/workflow"
+	"github.com/bubo-squared/temporal-sdk-go/client"
+	"github.com/bubo-squared/temporal-sdk-go/temporalnexus"
+	"github.com/bubo-squared/temporal-sdk-go/worker"
+	"github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 type MyWorkflowInput struct {

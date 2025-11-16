@@ -11,11 +11,11 @@ import (
 	commonpb "go.temporal.io/api/common/v1"
 	"go.temporal.io/api/workflowservicemock/v1"
 
-	"github.com/bubo-squared/temporal-go-sdk/client"
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal"
-	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
-	"github.com/bubo-squared/temporal-go-sdk/worker"
+	"github.com/bubo-squared/temporal-sdk-go/client"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
+	ilog "github.com/bubo-squared/temporal-sdk-go/internal/log"
+	"github.com/bubo-squared/temporal-sdk-go/worker"
 )
 
 type replayTestSuite struct {

@@ -6,7 +6,7 @@ import (
 	enumspb "go.temporal.io/api/enums/v1"
 	"go.temporal.io/api/serviceerror"
 
-	"github.com/bubo-squared/temporal-go-sdk/internal"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
 )
 
 /*

@@ -31,12 +31,12 @@ import (
 	"go.temporal.io/api/workflowservice/v1"
 	"go.temporal.io/api/workflowservicemock/v1"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/cache"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
-	"github.com/bubo-squared/temporal-go-sdk/internal/protocol"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/cache"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	ilog "github.com/bubo-squared/temporal-sdk-go/internal/log"
+	"github.com/bubo-squared/temporal-sdk-go/internal/protocol"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 const (

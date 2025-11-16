@@ -8,14 +8,14 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/nexus-rpc/sdk-go/nexus"
-	"github.com/bubo-squared/temporal-go-sdk/client"
-	"github.com/bubo-squared/temporal-go-sdk/temporalnexus"
+	"github.com/bubo-squared/temporal-sdk-go/client"
+	"github.com/bubo-squared/temporal-sdk-go/temporalnexus"
 
 	"go.temporal.io/api/enums/v1"
 	"go.temporal.io/api/workflowservice/v1"
-	"github.com/bubo-squared/temporal-go-sdk/activity"
-	"github.com/bubo-squared/temporal-go-sdk/temporal"
-	"github.com/bubo-squared/temporal-go-sdk/workflow"
+	"github.com/bubo-squared/temporal-sdk-go/activity"
+	"github.com/bubo-squared/temporal-sdk-go/temporal"
+	"github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 // Workflow1 test workflow

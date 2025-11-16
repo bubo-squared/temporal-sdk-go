@@ -8,10 +8,10 @@ import (
 
 	commonpb "go.temporal.io/api/common/v1"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal"
-	bindings "github.com/bubo-squared/temporal-go-sdk/internalbindings"
-	"github.com/bubo-squared/temporal-go-sdk/workflow"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
+	bindings "github.com/bubo-squared/temporal-sdk-go/internalbindings"
+	"github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 type EmptyWorkflowDefinitionFactory struct {

@@ -1,7 +1,7 @@
 package workflow
 
 import (
-	"github.com/bubo-squared/temporal-go-sdk/internal"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
 )
 
 // Context is a clone of context.Context with Done() returning Channel instead

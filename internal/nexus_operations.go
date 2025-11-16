@@ -15,14 +15,14 @@ import (
 	"go.temporal.io/api/workflowservice/v1"
 	"google.golang.org/protobuf/encoding/protojson"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 // NexusOperationInfo contains information about a currently executing Nexus operation.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporalnexus.OperationInfo]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/temporalnexus.OperationInfo]
 type NexusOperationInfo struct {
 	// The namespace of the worker handling this Nexus operation.
 	Namespace string
@@ -99,7 +99,7 @@ func nexusOperationOutboundInterceptorFromGoContext(ctx context.Context) (nctx N
 
 // IsNexusOperation checks if the provided context is a Nexus operation context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporalnexus.IsNexusOperation]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/temporalnexus.IsNexusOperation]
 func IsNexusOperation(ctx context.Context) bool {
 	_, ok := NexusOperationContextFromGoContext(ctx)
 	return ok
@@ -107,7 +107,7 @@ func IsNexusOperation(ctx context.Context) bool {
 
 // GetNexusOperationInfo returns information about the currently executing Nexus operation.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporalnexus.GetOperationInfo]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/temporalnexus.GetOperationInfo]
 func GetNexusOperationInfo(ctx context.Context) NexusOperationInfo {
 	interceptor, ok := nexusOperationOutboundInterceptorFromGoContext(ctx)
 	if !ok {
@@ -118,7 +118,7 @@ func GetNexusOperationInfo(ctx context.Context) NexusOperationInfo {
 
 // GetNexusOperationMetricsHandler returns a metrics handler to be used in a Nexus operation's context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporalnexus.GetMetricsHandler]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/temporalnexus.GetMetricsHandler]
 func GetNexusOperationMetricsHandler(ctx context.Context) metrics.Handler {
 	interceptor, ok := nexusOperationOutboundInterceptorFromGoContext(ctx)
 	if !ok {
@@ -129,7 +129,7 @@ func GetNexusOperationMetricsHandler(ctx context.Context) metrics.Handler {
 
 // GetNexusOperationLogger returns a logger to be used in a Nexus operation's context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporalnexus.GetLogger]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/temporalnexus.GetLogger]
 func GetNexusOperationLogger(ctx context.Context) log.Logger {
 	interceptor, ok := nexusOperationOutboundInterceptorFromGoContext(ctx)
 	if !ok {
@@ -141,7 +141,7 @@ func GetNexusOperationLogger(ctx context.Context) log.Logger {
 // GetNexusOperationClient returns a client to be used in a Nexus operation's context, this is the same client that the
 // worker was created with. Client methods will panic when called from the test environment.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporalnexus.GetClient]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/temporalnexus.GetClient]
 func GetNexusOperationClient(ctx context.Context) Client {
 	interceptor, ok := nexusOperationOutboundInterceptorFromGoContext(ctx)
 	if !ok {
@@ -750,5 +750,5 @@ func (t *testEnvWorkflowRunForNexusOperations) GetWithOptions(ctx context.Contex
 	panic("not implemented in the test environment")
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkflowRun]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.WorkflowRun]
 var _ WorkflowRun = &testEnvWorkflowRunForNexusOperations{}

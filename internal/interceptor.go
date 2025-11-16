@@ -8,15 +8,15 @@ import (
 	commonpb "go.temporal.io/api/common/v1"
 	enumspb "go.temporal.io/api/enums/v1"
 	updatepb "go.temporal.io/api/update/v1"
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 // Interceptor is a common interface for all interceptors. See documentation in
 // the interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.Interceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.Interceptor]
 type Interceptor interface {
 	ClientInterceptor
 	WorkerInterceptor
@@ -25,7 +25,7 @@ type Interceptor interface {
 // WorkerInterceptor is a common interface for all interceptors. See
 // documentation in the interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.WorkerInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.WorkerInterceptor]
 type WorkerInterceptor interface {
 	// InterceptActivity is called before each activity interception needed with
 	// the next interceptor in the chain.
@@ -44,7 +44,7 @@ type WorkerInterceptor interface {
 // from the server. See documentation in the interceptor package for more
 // details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ActivityInboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ActivityInboundInterceptor]
 type ActivityInboundInterceptor interface {
 	// Init is the first call of this interceptor. Implementations can change/wrap
 	// the outbound interceptor before calling Init on the next interceptor.
@@ -59,7 +59,7 @@ type ActivityInboundInterceptor interface {
 
 // ExecuteActivityInput is the input to ActivityInboundInterceptor.ExecuteActivity.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ExecuteActivityInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ExecuteActivityInput]
 type ExecuteActivityInput struct {
 	Args []interface{}
 }
@@ -68,7 +68,7 @@ type ExecuteActivityInput struct {
 // originating from the SDK. See documentation in the interceptor package for
 // more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ActivityOutboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ActivityOutboundInterceptor]
 type ActivityOutboundInterceptor interface {
 	// GetInfo intercepts activity.GetInfo.
 	GetInfo(ctx context.Context) ActivityInfo
@@ -101,7 +101,7 @@ type ActivityOutboundInterceptor interface {
 // from the server. See documentation in the interceptor package for more
 // details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.WorkflowInboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.WorkflowInboundInterceptor]
 type WorkflowInboundInterceptor interface {
 	// Init is the first call of this interceptor. Implementations can change/wrap
 	// the outbound interceptor before calling Init on the next interceptor.
@@ -138,14 +138,14 @@ type WorkflowInboundInterceptor interface {
 // ExecuteWorkflowInput is the input to
 // WorkflowInboundInterceptor.ExecuteWorkflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ExecuteWorkflowInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ExecuteWorkflowInput]
 type ExecuteWorkflowInput struct {
 	Args []interface{}
 }
 
 // HandleSignalInput is the input to WorkflowInboundInterceptor.HandleSignal.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.HandleSignalInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.HandleSignalInput]
 type HandleSignalInput struct {
 	SignalName string
 	// Arg is the signal argument. It is presented as a primitive payload since
@@ -155,7 +155,7 @@ type HandleSignalInput struct {
 
 // UpdateInput carries the name and arguments of a workflow update invocation.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.UpdateInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.UpdateInput]
 type UpdateInput struct {
 	Name string
 	Args []interface{}
@@ -163,7 +163,7 @@ type UpdateInput struct {
 
 // HandleQueryInput is the input to WorkflowInboundInterceptor.HandleQuery.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.HandleQueryInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.HandleQueryInput]
 type HandleQueryInput struct {
 	QueryType string
 	Args      []interface{}
@@ -173,7 +173,7 @@ type HandleQueryInput struct {
 //
 // NOTE: Experimental
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ExecuteNexusOperationInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ExecuteNexusOperationInput]
 type ExecuteNexusOperationInput struct {
 	// Client to start the operation with.
 	Client NexusClient
@@ -191,7 +191,7 @@ type ExecuteNexusOperationInput struct {
 //
 // NOTE: Experimental
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.RequestCancelNexusOperationInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.RequestCancelNexusOperationInput]
 type RequestCancelNexusOperationInput struct {
 	// Client that was used to start the operation.
 	Client NexusClient
@@ -207,7 +207,7 @@ type RequestCancelNexusOperationInput struct {
 // originating from the SDK. See documentation in the interceptor package for
 // more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.WorkflowOutboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.WorkflowOutboundInterceptor]
 type WorkflowOutboundInterceptor interface {
 	// Go intercepts workflow.Go.
 	Go(ctx Context, name string, f func(ctx Context)) Context
@@ -352,7 +352,7 @@ type WorkflowOutboundInterceptor interface {
 // certain workflow-specific client calls from the SDK. See documentation in the
 // interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientInterceptor]
 type ClientInterceptor interface {
 	// This is called on client creation if set via client options
 	InterceptClient(next ClientOutboundInterceptor) ClientOutboundInterceptor
@@ -364,7 +364,7 @@ type ClientInterceptor interface {
 // originating from the SDK. See documentation in the interceptor package for
 // more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientOutboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientOutboundInterceptor]
 type ClientOutboundInterceptor interface {
 	// ExecuteWorkflow intercepts client.Client.ExecuteWorkflow.
 	// interceptor.Header will return a non-nil map for this context.
@@ -412,7 +412,7 @@ type ClientOutboundInterceptor interface {
 // ClientUpdateWorkflowInput is the input to
 // ClientOutboundInterceptor.UpdateWorkflow
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientUpdateWorkflowInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientUpdateWorkflowInput]
 type ClientUpdateWorkflowInput struct {
 	UpdateID            string
 	WorkflowID          string
@@ -423,7 +423,7 @@ type ClientUpdateWorkflowInput struct {
 	WaitForStage        WorkflowUpdateStage
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientUpdateWithStartWorkflowInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientUpdateWithStartWorkflowInput]
 type ClientUpdateWithStartWorkflowInput struct {
 	UpdateOptions          *UpdateWorkflowOptions
 	StartWorkflowOperation WithStartWorkflowOperation
@@ -447,7 +447,7 @@ type ClientPollWorkflowUpdateOutput struct {
 // ScheduleClientCreateInput is the input to
 // ClientOutboundInterceptor.CreateSchedule.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ScheduleClientCreateInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ScheduleClientCreateInput]
 type ScheduleClientCreateInput struct {
 	Options *ScheduleOptions
 }
@@ -455,7 +455,7 @@ type ScheduleClientCreateInput struct {
 // ClientExecuteWorkflowInput is the input to
 // ClientOutboundInterceptor.ExecuteWorkflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientExecuteWorkflowInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientExecuteWorkflowInput]
 type ClientExecuteWorkflowInput struct {
 	Options      *StartWorkflowOptions
 	WorkflowType string
@@ -465,7 +465,7 @@ type ClientExecuteWorkflowInput struct {
 // ClientSignalWorkflowInput is the input to
 // ClientOutboundInterceptor.SignalWorkflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientSignalWorkflowInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientSignalWorkflowInput]
 type ClientSignalWorkflowInput struct {
 	WorkflowID string
 	RunID      string
@@ -476,7 +476,7 @@ type ClientSignalWorkflowInput struct {
 // ClientSignalWithStartWorkflowInput is the input to
 // ClientOutboundInterceptor.SignalWithStartWorkflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientSignalWithStartWorkflowInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientSignalWithStartWorkflowInput]
 type ClientSignalWithStartWorkflowInput struct {
 	SignalName   string
 	SignalArg    interface{}
@@ -488,7 +488,7 @@ type ClientSignalWithStartWorkflowInput struct {
 // ClientCancelWorkflowInput is the input to
 // ClientOutboundInterceptor.CancelWorkflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientCancelWorkflowInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientCancelWorkflowInput]
 type ClientCancelWorkflowInput struct {
 	WorkflowID string
 	RunID      string
@@ -497,7 +497,7 @@ type ClientCancelWorkflowInput struct {
 // ClientTerminateWorkflowInput is the input to
 // ClientOutboundInterceptor.TerminateWorkflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientTerminateWorkflowInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientTerminateWorkflowInput]
 type ClientTerminateWorkflowInput struct {
 	WorkflowID string
 	RunID      string
@@ -508,7 +508,7 @@ type ClientTerminateWorkflowInput struct {
 // ClientQueryWorkflowInput is the input to
 // ClientOutboundInterceptor.QueryWorkflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientQueryWorkflowInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientQueryWorkflowInput]
 type ClientQueryWorkflowInput struct {
 	WorkflowID           string
 	RunID                string
@@ -520,7 +520,7 @@ type ClientQueryWorkflowInput struct {
 // ClientDescribeWorkflowInput is the input to
 // ClientOutboundInterceptor.DescribeWorkflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientDescribeWorkflowInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientDescribeWorkflowInput]
 type ClientDescribeWorkflowInput struct {
 	WorkflowID string
 	RunID      string
@@ -529,7 +529,7 @@ type ClientDescribeWorkflowInput struct {
 // ClientDescribeWorkflowInput is the output to
 // ClientOutboundInterceptor.DescribeWorkflow.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientDescribeWorkflowOutput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientDescribeWorkflowOutput]
 type ClientDescribeWorkflowOutput struct {
 	Response *WorkflowExecutionDescription
 }
@@ -537,7 +537,7 @@ type ClientDescribeWorkflowOutput struct {
 // NexusOutboundInterceptor intercepts Nexus operation method invocations. See documentation in the interceptor package
 // for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.NexusOperationInboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.NexusOperationInboundInterceptor]
 //
 // NOTE: Experimental
 type NexusOperationInboundInterceptor interface {
@@ -556,7 +556,7 @@ type NexusOperationInboundInterceptor interface {
 // NexusOperationOutboundInterceptor intercepts methods exposed in the temporalnexus package. See documentation in the
 // interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.NexusOperationOutboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.NexusOperationOutboundInterceptor]
 //
 // Note: Experimental
 type NexusOperationOutboundInterceptor interface {
@@ -574,7 +574,7 @@ type NexusOperationOutboundInterceptor interface {
 
 // NexusStartOperationInput is the input to NexusOperationInboundInterceptor.StartOperation.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.NexusStartOperationInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.NexusStartOperationInput]
 //
 // Note: Experimental
 type NexusStartOperationInput struct {
@@ -584,7 +584,7 @@ type NexusStartOperationInput struct {
 
 // NexusCancelOperationInput is the input to NexusOperationInboundInterceptor.CancelOperation.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.NexusCancelOperationInput]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.NexusCancelOperationInput]
 //
 // Note: Experimental
 type NexusCancelOperationInput struct {

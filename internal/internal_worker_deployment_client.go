@@ -10,7 +10,7 @@ import (
 	"go.temporal.io/api/common/v1"
 	"go.temporal.io/api/deployment/v1"
 	"go.temporal.io/api/workflowservice/v1"
-	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 

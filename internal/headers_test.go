@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	commonpb "go.temporal.io/api/common/v1"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
 )
 
 func TestHeaderWriter(t *testing.T) {

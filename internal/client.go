@@ -14,28 +14,28 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	ilog "github.com/bubo-squared/temporal-sdk-go/internal/log"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 const (
 	// DefaultNamespace is the namespace name which is used if not passed with options.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DefaultNamespace]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.DefaultNamespace]
 	DefaultNamespace = "default"
 
 	// QueryTypeStackTrace is the build in query type for Client.QueryWorkflow() call. Use this query type to get the call
 	// stack of the workflow. The result will be a string encoded in the EncodedValue.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.QueryTypeStackTrace]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.QueryTypeStackTrace]
 	QueryTypeStackTrace string = "__stack_trace"
 
 	// QueryTypeOpenSessions is the build in query type for Client.QueryWorkflow() call. Use this query type to get all open
 	// sessions in the workflow. The result will be a list of SessionInfo encoded in the EncodedValue.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.QueryTypeOpenSessions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.QueryTypeOpenSessions]
 	QueryTypeOpenSessions string = "__open_sessions"
 
 	// QueryTypeWorkflowMetadata is the query name for the workflow metadata.
@@ -436,7 +436,7 @@ type (
 
 	// ClientOptions are optional parameters for Client creation.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.Options]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.Options]
 	ClientOptions struct {
 		// Optional: To set the host:port for this client to connect to.
 		//
@@ -537,7 +537,7 @@ type (
 
 	// ConnectionOptions is provided by SDK consumers to control optional connection params.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ConnectionOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.ConnectionOptions]
 	ConnectionOptions struct {
 		// TLS configures connection level security credentials.
 		TLS *tls.Config
@@ -602,7 +602,7 @@ type (
 	// The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 	// subjected to change in the future.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.StartWorkflowOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.StartWorkflowOptions]
 	StartWorkflowOptions struct {
 		// ID - The business identifier of the workflow execution.
 		//
@@ -811,7 +811,7 @@ type (
 	// you can use CLI to describe the workflow to see the status of the activity:
 	//     temporal workflow describe --namespace <namespace> --workflow-id <wf-id>
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.RetryPolicy]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/temporal.RetryPolicy]
 	RetryPolicy struct {
 		// Backoff interval for the first retry. If BackoffCoefficient is 1.0 then it is used for all retries.
 		// If not set or set to 0, a default interval of 1s will be used.
@@ -852,7 +852,7 @@ type (
 	//
 	// WARNING: Task queue priority is currently experimental.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.Priority]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/temporal.Priority]
 	Priority struct {
 		// PriorityKey is a positive integer from 1 to n, where smaller integers
 		// correspond to higher priorities (tasks run sooner). In general, tasks in
@@ -926,7 +926,7 @@ type (
 
 // Credentials are optional credentials that can be specified in ClientOptions.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.Credentials]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.Credentials]
 type Credentials interface {
 	applyToOptions(*ConnectionOptions) error
 	// Can return nil to have no interceptor
@@ -935,7 +935,7 @@ type Credentials interface {
 
 // DialClient creates a client and attempts to connect to the server.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DialContext]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.DialContext]
 func DialClient(ctx context.Context, options ClientOptions) (Client, error) {
 	options.ConnectionOptions.disableEagerConnection = false
 	return NewClient(ctx, options)
@@ -943,7 +943,7 @@ func DialClient(ctx context.Context, options ClientOptions) (Client, error) {
 
 // NewLazyClient creates a client and does not attempt to connect to the server.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.NewLazyClient]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.NewLazyClient]
 func NewLazyClient(options ClientOptions) (Client, error) {
 	options.ConnectionOptions.disableEagerConnection = true
 	return NewClient(context.Background(), options)
@@ -953,7 +953,7 @@ func NewLazyClient(options ClientOptions) (Client, error) {
 //
 // Deprecated: Use DialClient or NewLazyClient instead.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.NewClient]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.NewClient]
 func NewClient(ctx context.Context, options ClientOptions) (Client, error) {
 	return newClient(ctx, options, nil)
 }
@@ -961,7 +961,7 @@ func NewClient(ctx context.Context, options ClientOptions) (Client, error) {
 // NewClientFromExisting creates a new client using the same connection as the
 // existing client.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.NewClientFromExistingWithContext]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.NewClientFromExistingWithContext]
 func NewClientFromExisting(ctx context.Context, existingClient Client, options ClientOptions) (Client, error) {
 	existing, _ := existingClient.(*WorkflowClient)
 	if existing == nil {
@@ -1137,7 +1137,7 @@ func (op *withStartWorkflowOperationImpl) set(workflowRun WorkflowRun, err error
 
 // NewNamespaceClient creates an instance of a namespace client, to manager lifecycle of namespaces.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.NewNamespaceClient]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.NewNamespaceClient]
 func NewNamespaceClient(options ClientOptions) (NamespaceClient, error) {
 	// Initialize root tags
 	if options.MetricsHandler == nil {
@@ -1179,7 +1179,7 @@ func newNamespaceServiceClient(workflowServiceClient workflowservice.WorkflowSer
 //	var result string // This need to be same type as the one passed to RecordHeartbeat
 //	NewValue(data).Get(&result)
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.NewValue]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.NewValue]
 func NewValue(data *commonpb.Payloads) converter.EncodedValue {
 	return newEncodedValue(data, nil)
 }
@@ -1193,19 +1193,19 @@ func NewValue(data *commonpb.Payloads) converter.EncodedValue {
 //	var result2 int // These need to be same type as those arguments passed to RecordHeartbeat
 //	NewValues(data).Get(&result1, &result2)
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.NewValues]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.NewValues]
 func NewValues(data *commonpb.Payloads) converter.EncodedValues {
 	return newEncodedValues(data, nil)
 }
 
 type apiKeyCredentials func(context.Context) (string, error)
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.NewAPIKeyStaticCredentials]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.NewAPIKeyStaticCredentials]
 func NewAPIKeyStaticCredentials(apiKey string) Credentials {
 	return NewAPIKeyDynamicCredentials(func(ctx context.Context) (string, error) { return apiKey, nil })
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.NewAPIKeyDynamicCredentials]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.NewAPIKeyDynamicCredentials]
 func NewAPIKeyDynamicCredentials(apiKeyCallback func(context.Context) (string, error)) Credentials {
 	return apiKeyCredentials(apiKeyCallback)
 }
@@ -1236,7 +1236,7 @@ func (a apiKeyCredentials) gRPCIntercept(
 
 type mTLSCredentials tls.Certificate
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.NewMTLSCredentials]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.NewMTLSCredentials]
 func NewMTLSCredentials(certificate tls.Certificate) Credentials { return mTLSCredentials(certificate) }
 
 func (m mTLSCredentials) applyToOptions(opts *ConnectionOptions) error {
@@ -1255,14 +1255,14 @@ func (mTLSCredentials) gRPCInterceptor() grpc.UnaryClientInterceptor { return ni
 //
 // Note, this is not related to any general concept of timing out or cancelling a running update, this is only related to the client call itself.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkflowUpdateServiceTimeoutOrCanceledError]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.WorkflowUpdateServiceTimeoutOrCanceledError]
 type WorkflowUpdateServiceTimeoutOrCanceledError struct {
 	cause error
 }
 
 // NewWorkflowUpdateServiceTimeoutOrCanceledError creates a new WorkflowUpdateServiceTimeoutOrCanceledError.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.NewWorkflowUpdateServiceTimeoutOrCanceledError]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.NewWorkflowUpdateServiceTimeoutOrCanceledError]
 func NewWorkflowUpdateServiceTimeoutOrCanceledError(err error) *WorkflowUpdateServiceTimeoutOrCanceledError {
 	return &WorkflowUpdateServiceTimeoutOrCanceledError{
 		cause: err,

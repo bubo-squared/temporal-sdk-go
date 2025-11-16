@@ -15,7 +15,7 @@ string parameter, appends a word to it and then returns the result.
 	import (
 		"context"
 
-		"github.com/bubo-squared/temporal-go-sdk/activity"
+		"github.com/bubo-squared/temporal-sdk-go/activity"
 	)
 
 	func SimpleActivity(ctx context.Context, value string) (string, error) {
@@ -78,8 +78,8 @@ the Temporal managed service.
 	}
 
 When the Activity times out due to a missed heartbeat, the last value of the details (progress in the above sample) is
-returned from the [github.com/bubo-squared/temporal-go-sdk/workflow.ExecuteActivity] function as the details field of
-[github.com/bubo-squared/temporal-go-sdk/temporal.TimeoutError] with TimeoutType_HEARTBEAT.
+returned from the [github.com/bubo-squared/temporal-sdk-go/workflow.ExecuteActivity] function as the details field of
+[github.com/bubo-squared/temporal-sdk-go/temporal.TimeoutError] with TimeoutType_HEARTBEAT.
 
 It is also possible to heartbeat an Activity from an external source:
 

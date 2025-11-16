@@ -5,8 +5,8 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/bubo-squared/temporal-go-sdk/temporal"
-	"github.com/bubo-squared/temporal-go-sdk/workflow"
+	"github.com/bubo-squared/temporal-sdk-go/temporal"
+	"github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 func WorkflowNop(ctx workflow.Context) error {

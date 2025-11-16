@@ -8,8 +8,8 @@ import (
 
 	grpc_retry "github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/retry"
 	"go.temporal.io/api/serviceerror"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/retry"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/retry"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/backoff"
 	"google.golang.org/grpc/credentials"
@@ -32,7 +32,7 @@ type (
 const (
 	// LocalHostPort is a default host:port for worker and client to connect to.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DefaultHostPort]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/client.DefaultHostPort]
 	LocalHostPort = "localhost:7233"
 
 	// defaultServiceConfig is a default gRPC connection service config which enables DNS round-robin between IPs.

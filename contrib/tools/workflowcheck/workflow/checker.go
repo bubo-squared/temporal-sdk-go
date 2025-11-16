@@ -9,7 +9,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/bubo-squared/temporal-go-sdk/contrib/tools/workflowcheck/determinism"
+	"github.com/bubo-squared/temporal-sdk-go/contrib/tools/workflowcheck/determinism"
 	"golang.org/x/tools/go/analysis"
 	"gopkg.in/yaml.v2"
 )
@@ -19,19 +19,19 @@ import (
 var DefaultIdentRefs = determinism.DefaultIdentRefs.Clone().SetAll(determinism.IdentRefs{
 	// Reported as non-deterministic because it internally starts a goroutine, so
 	// mark deterministic explicitly
-	"github.com/bubo-squared/temporal-go-sdk/internal.propagateCancel": false,
+	"github.com/bubo-squared/temporal-sdk-go/internal.propagateCancel": false,
 	// Reported as non-deterministic because it iterates over a map, so mark
 	// deterministic explicitly
-	"(*github.com/bubo-squared/temporal-go-sdk/internal.cancelCtx).cancel": false,
+	"(*github.com/bubo-squared/temporal-sdk-go/internal.cancelCtx).cancel": false,
 	// Reported as non-deterministic because it iterates over a map, just takes
 	// the size of the map, so mark deterministic explicitly
-	"(github.com/bubo-squared/temporal-go-sdk/internal.SearchAttributes).Size": false,
+	"(github.com/bubo-squared/temporal-sdk-go/internal.SearchAttributes).Size": false,
 	// Reported as non-deterministic because it iterates over a map, result is sorted
 	// so mark deterministic explicitly
-	"github.com/bubo-squared/temporal-go-sdk/internal.DeterministicKeys": false,
+	"github.com/bubo-squared/temporal-sdk-go/internal.DeterministicKeys": false,
 	// Reported as non-deterministic because it iterates over a map, result is sorted
 	// so mark deterministic explicitly
-	"github.com/bubo-squared/temporal-go-sdk/internal.DeterministicKeysFunc": false,
+	"github.com/bubo-squared/temporal-sdk-go/internal.DeterministicKeysFunc": false,
 })
 
 // Config is config for NewChecker.
@@ -83,7 +83,7 @@ func NewChecker(config Config) *Checker {
 			DebugfFunc:                        config.DebugfFunc,
 			Debug:                             config.DeterminismDebug,
 			EnableObjectFacts:                 config.EnableObjectFacts,
-			AcceptsNonDeterministicParameters: map[string][]string{"github.com/bubo-squared/temporal-go-sdk/workflow": {"SideEffect", "MutableSideEffect"}},
+			AcceptsNonDeterministicParameters: map[string][]string{"github.com/bubo-squared/temporal-sdk-go/workflow": {"SideEffect", "MutableSideEffect"}},
 		}),
 	}
 }
@@ -127,7 +127,7 @@ func (c *Checker) Run(pass *analysis.Pass) error {
 
 	// If it's the workflow package, we assume the entire package is deterministic
 	// so we don't run a pass on it
-	if pass.Pkg.Path() == "github.com/bubo-squared/temporal-go-sdk/workflow" {
+	if pass.Pkg.Path() == "github.com/bubo-squared/temporal-sdk-go/workflow" {
 		return nil
 	}
 
@@ -197,7 +197,7 @@ func isWorkflowFunc(f *ast.FuncDecl, pass *analysis.Pass) (b bool) {
 		return false
 	}
 	path := obj.Pkg().Path()
-	return path == "github.com/bubo-squared/temporal-go-sdk/workflow" || path == "github.com/bubo-squared/temporal-go-sdk/internal"
+	return path == "github.com/bubo-squared/temporal-sdk-go/workflow" || path == "github.com/bubo-squared/temporal-sdk-go/internal"
 }
 
 type configFileFlag struct{ checker *determinism.Checker }

@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"go.temporal.io/api/serviceerror"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/retry"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/retry"
 )
 
 type someError struct{}

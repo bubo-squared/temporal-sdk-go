@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 	"github.com/uber-go/tally/v4"
-	contribtally "github.com/bubo-squared/temporal-go-sdk/contrib/tally"
+	contribtally "github.com/bubo-squared/temporal-sdk-go/contrib/tally"
 )
 
 func TestPrometheusNaming(t *testing.T) {

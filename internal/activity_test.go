@@ -11,7 +11,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	"go.temporal.io/api/serviceerror"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
 	"google.golang.org/grpc"
 
 	"go.temporal.io/api/workflowservice/v1"

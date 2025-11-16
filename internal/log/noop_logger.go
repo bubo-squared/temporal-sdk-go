@@ -1,7 +1,7 @@
 package log
 
 import (
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 // NoopLogger is Logger implementation that doesn't produce any logs.

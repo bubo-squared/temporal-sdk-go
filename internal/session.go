@@ -10,7 +10,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/backoff"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/backoff"
 )
 
 type (
@@ -20,7 +20,7 @@ type (
 	// is called and can be used to uniquely identify a session.
 	// HostName specifies which host is executing the session
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SessionInfo]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SessionInfo]
 	SessionInfo struct {
 		SessionID         string
 		HostName          string
@@ -40,7 +40,7 @@ type (
 	//     Specifies the heartbeat timeout. If heartbeat is not received by server
 	//     within the timeout, the session will be declared as failed
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SessionOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SessionOptions]
 	SessionOptions struct {
 		ExecutionTimeout time.Duration
 		CreationTimeout  time.Duration
@@ -85,13 +85,13 @@ type (
 // Session State enum
 const (
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SessionStateOpen]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SessionStateOpen]
 	SessionStateOpen SessionState = iota
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SessionStateFailed]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SessionStateFailed]
 	SessionStateFailed
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.SessionStateClosed]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.SessionStateClosed]
 	SessionStateClosed
 )
 
@@ -112,7 +112,7 @@ var (
 	// ErrSessionFailed is the error returned when user tries to execute an activity but the
 	// session it belongs to has already failed
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.ErrSessionFailed]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.ErrSessionFailed]
 	ErrSessionFailed            = errors.New("session has failed")
 	errFoundExistingOpenSession = errors.New("found exisiting open session in the context")
 )
@@ -170,7 +170,7 @@ var (
 //	   }
 //	   ... // execute more activities using sessionCtx
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.CreateSession]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.CreateSession]
 func CreateSession(ctx Context, sessionOptions *SessionOptions) (Context, error) {
 	options := getActivityOptions(ctx)
 	baseTaskqueue := options.TaskQueueName
@@ -189,7 +189,7 @@ func CreateSession(ctx Context, sessionOptions *SessionOptions) (Context, error)
 // one run, complete the current session, get recreateToken from sessionInfo by calling SessionInfo.GetRecreateToken()
 // and pass the token to the next run. In the new run, session can be recreated using that token.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.RecreateSession]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.RecreateSession]
 func RecreateSession(ctx Context, recreateToken []byte, sessionOptions *SessionOptions) (Context, error) {
 	recreateParams, err := deserializeRecreateToken(recreateToken)
 	if err != nil {
@@ -206,7 +206,7 @@ func RecreateSession(ctx Context, recreateToken []byte, sessionOptions *SessionO
 // on the normal taskQueue (as user specified in ActivityOptions) and may be picked up by another worker since
 // it's not in a session.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.CompleteSession]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.CompleteSession]
 func CompleteSession(ctx Context) {
 	sessionInfo := getSessionInfo(ctx)
 	if sessionInfo == nil || sessionInfo.SessionState != SessionStateOpen {
@@ -243,7 +243,7 @@ func CompleteSession(ctx Context) {
 //
 // This API will return nil if there's no sessionInfo in the context.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.GetSessionInfo]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/workflow.GetSessionInfo]
 func GetSessionInfo(ctx Context) *SessionInfo {
 	info := getSessionInfo(ctx)
 	if info == nil {

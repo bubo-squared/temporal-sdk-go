@@ -3,9 +3,9 @@ package workflow
 import (
 	"time"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal"
-	"github.com/bubo-squared/temporal-go-sdk/temporal"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
+	"github.com/bubo-squared/temporal-sdk-go/temporal"
 )
 
 // WithChildOptions adds all workflow options to the context.

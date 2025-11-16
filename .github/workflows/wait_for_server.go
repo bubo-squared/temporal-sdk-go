@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-sdk-go/client"
 )
 
 func main() {

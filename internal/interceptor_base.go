@@ -5,15 +5,15 @@ import (
 	"time"
 
 	"github.com/nexus-rpc/sdk-go/nexus"
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 // InterceptorBase is a default implementation of Interceptor meant for
 // embedding. See documentation in the interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.InterceptorBase]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.InterceptorBase]
 type InterceptorBase struct {
 	ClientInterceptorBase
 	WorkerInterceptorBase
@@ -22,10 +22,10 @@ type InterceptorBase struct {
 // WorkerInterceptorBase is a default implementation of WorkerInterceptor meant
 // for embedding. See documentation in the interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.WorkerInterceptorBase]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.WorkerInterceptorBase]
 type WorkerInterceptorBase struct{}
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.WorkerInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.WorkerInterceptor]
 var _ WorkerInterceptor = &WorkerInterceptorBase{}
 
 // InterceptActivity implements WorkerInterceptor.InterceptActivity.
@@ -55,12 +55,12 @@ func (*WorkerInterceptorBase) mustEmbedWorkerInterceptorBase() {}
 // ActivityInboundInterceptor meant for embedding. See documentation in the
 // interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ActivityInboundInterceptorBase]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ActivityInboundInterceptorBase]
 type ActivityInboundInterceptorBase struct {
 	Next ActivityInboundInterceptor
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ActivityInboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ActivityInboundInterceptor]
 var _ ActivityInboundInterceptor = &ActivityInboundInterceptorBase{}
 
 // Init implements ActivityInboundInterceptor.Init.
@@ -82,12 +82,12 @@ func (*ActivityInboundInterceptorBase) mustEmbedActivityInboundInterceptorBase()
 // ActivityOutboundInterceptor meant for embedding. See documentation in the
 // interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ActivityOutboundInterceptorBase]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ActivityOutboundInterceptorBase]
 type ActivityOutboundInterceptorBase struct {
 	Next ActivityOutboundInterceptor
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ActivityOutboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ActivityOutboundInterceptor]
 var _ ActivityOutboundInterceptor = &ActivityOutboundInterceptorBase{}
 
 // GetInfo implements ActivityOutboundInterceptor.GetInfo.
@@ -140,12 +140,12 @@ func (*ActivityOutboundInterceptorBase) mustEmbedActivityOutboundInterceptorBase
 // WorkflowInboundInterceptor meant for embedding. See documentation in the
 // interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.WorkflowInboundInterceptorBase]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.WorkflowInboundInterceptorBase]
 type WorkflowInboundInterceptorBase struct {
 	Next WorkflowInboundInterceptor
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.WorkflowInboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.WorkflowInboundInterceptor]
 var _ WorkflowInboundInterceptor = &WorkflowInboundInterceptorBase{}
 
 // Init implements WorkflowInboundInterceptor.Init.
@@ -184,12 +184,12 @@ func (*WorkflowInboundInterceptorBase) mustEmbedWorkflowInboundInterceptorBase()
 // WorkflowOutboundInterceptor meant for embedding. See documentation in the
 // interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.WorkflowOutboundInterceptorBase]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.WorkflowOutboundInterceptorBase]
 type WorkflowOutboundInterceptorBase struct {
 	Next WorkflowOutboundInterceptor
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.WorkflowOutboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.WorkflowOutboundInterceptor]
 var _ WorkflowOutboundInterceptor = &WorkflowOutboundInterceptorBase{}
 
 // Go implements WorkflowOutboundInterceptor.Go.
@@ -457,10 +457,10 @@ func (*WorkflowOutboundInterceptorBase) mustEmbedWorkflowOutboundInterceptorBase
 // ClientInterceptorBase is a default implementation of ClientInterceptor meant
 // for embedding. See documentation in the interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientInterceptorBase]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientInterceptorBase]
 type ClientInterceptorBase struct{}
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientInterceptor]
 var _ ClientInterceptor = &ClientInterceptorBase{}
 
 // InterceptClient implements ClientInterceptor.InterceptClient.
@@ -476,12 +476,12 @@ func (*ClientInterceptorBase) mustEmbedClientInterceptorBase() {}
 // ClientOutboundInterceptor meant for embedding. See documentation in the
 // interceptor package for more details.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientOutboundInterceptorBase]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientOutboundInterceptorBase]
 type ClientOutboundInterceptorBase struct {
 	Next ClientOutboundInterceptor
 }
 
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/interceptor.ClientOutboundInterceptor]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/interceptor.ClientOutboundInterceptor]
 var _ ClientOutboundInterceptor = &ClientOutboundInterceptorBase{}
 
 func (c *ClientOutboundInterceptorBase) UpdateWorkflow(

@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/require"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
 )
 
 func TestReplayAwareHandler(t *testing.T) {

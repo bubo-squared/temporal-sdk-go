@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/sdk/metric/metricdata"
 	"go.opentelemetry.io/otel/sdk/metric/metricdata/metricdatatest"
 
-	"github.com/bubo-squared/temporal-go-sdk/contrib/opentelemetry"
+	"github.com/bubo-squared/temporal-sdk-go/contrib/opentelemetry"
 )
 
 func TestTags(t *testing.T) {

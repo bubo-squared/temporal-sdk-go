@@ -30,14 +30,14 @@ type (
 
 	// PollerBehavior is used to configure the behavior of the poller.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.PollerBehavior]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.PollerBehavior]
 	PollerBehavior interface {
 		isPollerBehavior()
 	}
 
 	// PollerBehaviorAutoscalingOptions is the options for NewPollerBehaviorAutoscaling.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.PollerBehaviorAutoscalingOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.PollerBehaviorAutoscalingOptions]
 	PollerBehaviorAutoscalingOptions struct {
 		// InitialNumberOfPollers is the initial number of pollers to start.
 		//
@@ -57,7 +57,7 @@ type (
 
 	// PollerBehaviorSimpleMaximumOptions is the options for NewPollerBehaviorSimpleMaximum.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.PollerBehaviorSimpleMaximumOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.PollerBehaviorSimpleMaximumOptions]
 	PollerBehaviorSimpleMaximumOptions struct {
 		// MaximumNumberOfPollers is the maximum number of pollers the worker is allowed
 		// to start.
@@ -73,7 +73,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.DeploymentOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.DeploymentOptions]
 	WorkerDeploymentOptions struct {
 		// If set, opts this worker into the Worker Deployment Versioning feature. It will only
 		// operate on workflows it claims to be compatible with. You must set [Version] if this flag
@@ -106,7 +106,7 @@ type (
 	// The current timeout resolution implementation is in seconds and uses math.Ceil(d.Seconds()) as the duration. But is
 	// subjected to change in the future.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.Options]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.Options]
 	WorkerOptions struct {
 		// Optional: To set the maximum concurrent activity executions this worker can have.
 		// The zero value of this uses the default value.
@@ -398,7 +398,7 @@ type (
 // versioning (see workflow.GetVersion).
 // The default behavior is to block workflow execution until the problem is fixed.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.WorkflowPanicPolicy]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.WorkflowPanicPolicy]
 type WorkflowPanicPolicy int
 
 const (
@@ -407,13 +407,13 @@ const (
 	// It is expected that after the problem is discovered and fixed the workflows are going to continue
 	// without any additional manual intervention.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.BlockWorkflow]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.BlockWorkflow]
 	BlockWorkflow WorkflowPanicPolicy = iota
 	// FailWorkflow immediately fails workflow execution if workflow code throws panic or detects non-determinism.
 	// This feature is convenient during development.
 	// WARNING: enabling this in production can cause all open workflows to fail on a single bug or bad deployment.
 	//
-	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.FailWorkflow]
+	// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.FailWorkflow]
 	FailWorkflow
 )
 
@@ -433,7 +433,7 @@ func IsReplayNamespace(dn string) bool {
 //
 // options 	- configure any worker specific options.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.New]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.New]
 func NewWorker(
 	client Client,
 	taskQueue string,
@@ -473,7 +473,7 @@ func (p *pollerBehaviorAutoscaling) isPollerBehavior() {
 
 // NewPollerBehaviorSimpleMaximum creates a PollerBehavior that allows the worker to start up to a maximum number of pollers.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.NewPollerBehaviorSimpleMaximum]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.NewPollerBehaviorSimpleMaximum]
 func NewPollerBehaviorSimpleMaximum(
 	options PollerBehaviorSimpleMaximumOptions,
 ) PollerBehavior {
@@ -488,7 +488,7 @@ func NewPollerBehaviorSimpleMaximum(
 // NewPollerBehaviorAutoscaling creates a PollerBehavior that allows the worker to scale the number of pollers within a given range.
 // based on the workflow and feedback from the server.
 //
-// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.NewPollerBehaviorAutoscaling]
+// Exposed as: [github.com/bubo-squared/temporal-sdk-go/worker.NewPollerBehaviorAutoscaling]
 func NewPollerBehaviorAutoscaling(
 	options PollerBehaviorAutoscalingOptions,
 ) PollerBehavior {

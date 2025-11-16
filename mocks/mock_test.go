@@ -11,7 +11,7 @@ import (
 	historypb "go.temporal.io/api/history/v1"
 	"go.temporal.io/api/workflowservice/v1"
 
-	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-sdk-go/client"
 )
 
 func Test_MockClient(t *testing.T) {

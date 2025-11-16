@@ -35,26 +35,26 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/bubo-squared/temporal-go-sdk/contrib/opentelemetry"
-	sdkopentracing "github.com/bubo-squared/temporal-go-sdk/contrib/opentracing"
-	"github.com/bubo-squared/temporal-go-sdk/contrib/resourcetuner"
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/test"
+	"github.com/bubo-squared/temporal-sdk-go/contrib/opentelemetry"
+	sdkopentracing "github.com/bubo-squared/temporal-sdk-go/contrib/opentracing"
+	"github.com/bubo-squared/temporal-sdk-go/contrib/resourcetuner"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/test"
 
 	historypb "go.temporal.io/api/history/v1"
 	sdkpb "go.temporal.io/api/sdk/v1"
 
-	"github.com/bubo-squared/temporal-go-sdk/activity"
-	"github.com/bubo-squared/temporal-go-sdk/client"
-	contribtally "github.com/bubo-squared/temporal-go-sdk/contrib/tally"
-	"github.com/bubo-squared/temporal-go-sdk/interceptor"
-	"github.com/bubo-squared/temporal-go-sdk/internal"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
-	"github.com/bubo-squared/temporal-go-sdk/internal/interceptortest"
-	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
-	"github.com/bubo-squared/temporal-go-sdk/temporal"
-	"github.com/bubo-squared/temporal-go-sdk/worker"
-	"github.com/bubo-squared/temporal-go-sdk/workflow"
+	"github.com/bubo-squared/temporal-sdk-go/activity"
+	"github.com/bubo-squared/temporal-sdk-go/client"
+	contribtally "github.com/bubo-squared/temporal-sdk-go/contrib/tally"
+	"github.com/bubo-squared/temporal-sdk-go/interceptor"
+	"github.com/bubo-squared/temporal-sdk-go/internal"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/metrics"
+	"github.com/bubo-squared/temporal-sdk-go/internal/interceptortest"
+	ilog "github.com/bubo-squared/temporal-sdk-go/internal/log"
+	"github.com/bubo-squared/temporal-sdk-go/temporal"
+	"github.com/bubo-squared/temporal-sdk-go/worker"
+	"github.com/bubo-squared/temporal-sdk-go/workflow"
 )
 
 var usingCLIDevServerFlag bool
@@ -118,7 +118,7 @@ func (ts *IntegrationTestSuite) TearDownSuite() {
 			ts.FailNow("leaks timed out but no error, should be impossible")
 		case <-time.After(time.Second):
 			// https://github.com/temporalio/go-sdk/issues/51
-			last = goleak.Find(goleak.IgnoreTopFunction("github.com/bubo-squared/temporal-go-sdk/internal.(*coroutineState).initialYield"))
+			last = goleak.Find(goleak.IgnoreTopFunction("github.com/bubo-squared/temporal-sdk-go/internal.(*coroutineState).initialYield"))
 			if last == nil {
 				// no leak, done waiting
 				return
@@ -781,7 +781,7 @@ func (ts *IntegrationTestSuite) TestStackTraceQuery() {
 	ts.NotNil(value)
 	var trace string
 	ts.Nil(value.Get(&trace))
-	ts.True(strings.Contains(trace, "github.com/bubo-squared/temporal-go-sdk/test_test.(*Workflows).Basic"), trace)
+	ts.True(strings.Contains(trace, "github.com/bubo-squared/temporal-sdk-go/test_test.(*Workflows).Basic"), trace)
 }
 
 func (ts *IntegrationTestSuite) TestConsistentQuery() {

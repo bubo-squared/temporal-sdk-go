@@ -8,7 +8,7 @@ import (
 
 	"github.com/opentracing/opentracing-go"
 
-	"github.com/bubo-squared/temporal-go-sdk/interceptor"
+	"github.com/bubo-squared/temporal-sdk-go/interceptor"
 )
 
 // TracerOptions are options provided to NewInterceptor or NewTracer.

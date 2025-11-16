@@ -1,6 +1,6 @@
 package temporal
 
-import "github.com/bubo-squared/temporal-go-sdk/internal"
+import "github.com/bubo-squared/temporal-sdk-go/internal"
 
 // Priority defines the priority and fairness metadata for activity/workflow.
 //

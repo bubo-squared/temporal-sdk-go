@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 	commonpb "go.temporal.io/api/common/v1"
-	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
 )
 
 func TestDeadlockDetector(t *testing.T) {

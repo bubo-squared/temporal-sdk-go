@@ -12,8 +12,8 @@ import (
 	historypb "go.temporal.io/api/history/v1"
 	"go.temporal.io/api/sdk/v1"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
-	"github.com/bubo-squared/temporal-go-sdk/internal/common/util"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
+	"github.com/bubo-squared/temporal-sdk-go/internal/common/util"
 )
 
 type (

@@ -5,8 +5,8 @@ import (
 	"strings"
 	"sync"
 
-	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
-	"github.com/bubo-squared/temporal-go-sdk/log"
+	ilog "github.com/bubo-squared/temporal-sdk-go/internal/log"
+	"github.com/bubo-squared/temporal-sdk-go/log"
 )
 
 const FailAllAttempts = -1

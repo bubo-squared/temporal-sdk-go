@@ -1,6 +1,6 @@
 package temporal
 
-import "github.com/bubo-squared/temporal-go-sdk/internal"
+import "github.com/bubo-squared/temporal-sdk-go/internal"
 
 // SDKVersion is a semver that represents the version of this Temporal SDK.
 // This represents API changes visible to Temporal SDK consumers, i.e. developers

@@ -9,7 +9,7 @@ import (
 	commandpb "go.temporal.io/api/command/v1"
 	commonpb "go.temporal.io/api/common/v1"
 
-	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-sdk-go/converter"
 )
 
 func Test_TimerStateMachine_CancelBeforeSent(t *testing.T) {
