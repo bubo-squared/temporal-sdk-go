@@ -2169,7 +2169,7 @@ func (i *temporalInvoker) internalHeartBeat(ctx context.Context, details *common
 		// Transient errors are getting retried for the duration of the heartbeat timeout.
 		// The fact that error has been returned means that activity should now be timed out, hence we should
 		// propagate cancellation to the handler.
-		if retry.IsRetryable(err, i.excludeInternalFromRetry) {
+		if !retry.IsRetryable(err, i.excludeInternalFromRetry) {
 			i.cancelHandler(err)
 			isActivityCanceled = true
 		}
