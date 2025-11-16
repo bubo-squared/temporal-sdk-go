@@ -4,11 +4,11 @@ import (
 	"cmp"
 	"errors"
 
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/internal"
-	"go.temporal.io/sdk/internal/common/metrics"
-	"go.temporal.io/sdk/log"
-	"go.temporal.io/sdk/temporal"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/internal"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/temporal"
 )
 
 // VersioningBehavior specifies when existing workflows could change their Build ID.

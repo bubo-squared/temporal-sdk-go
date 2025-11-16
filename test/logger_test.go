@@ -15,10 +15,10 @@ import (
 	"log/slog"
 
 	"github.com/stretchr/testify/require"
-	"go.temporal.io/sdk/activity"
-	"go.temporal.io/sdk/log"
-	"go.temporal.io/sdk/testsuite"
-	"go.temporal.io/sdk/workflow"
+	"github.com/bubo-squared/temporal-go-sdk/activity"
+	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/testsuite"
+	"github.com/bubo-squared/temporal-go-sdk/workflow"
 )
 
 func logWorkflow(ctx workflow.Context, name string) error {
@@ -97,35 +97,35 @@ func Test_StructuredLogger(t *testing.T) {
 	expectedLogs := []slog.Source{
 		{
 			File:     "logger_test.go",
-			Function: "go.temporal.io/sdk/test_test.logWorkflow",
+			Function: "github.com/bubo-squared/temporal-go-sdk/test_test.logWorkflow",
 		},
 		{
 			File:     "logger_test.go",
-			Function: "go.temporal.io/sdk/test_test.loggingActivity",
+			Function: "github.com/bubo-squared/temporal-go-sdk/test_test.loggingActivity",
 		},
 		{
 			File:     "logger_test.go",
-			Function: "go.temporal.io/sdk/test_test.loggingActivity",
+			Function: "github.com/bubo-squared/temporal-go-sdk/test_test.loggingActivity",
 		},
 		{
 			File:     "internal_workflow_testsuite.go",
-			Function: "go.temporal.io/sdk/internal.(*testWorkflowEnvironmentImpl).handleActivityResult",
+			Function: "github.com/bubo-squared/temporal-go-sdk/internal.(*testWorkflowEnvironmentImpl).handleActivityResult",
 		},
 		{
 			File:     "logger_test.go",
-			Function: "go.temporal.io/sdk/test_test.loggingErrorActivity",
+			Function: "github.com/bubo-squared/temporal-go-sdk/test_test.loggingErrorActivity",
 		},
 		{
 			File:     "logger_test.go",
-			Function: "go.temporal.io/sdk/test_test.loggingErrorActivity",
+			Function: "github.com/bubo-squared/temporal-go-sdk/test_test.loggingErrorActivity",
 		},
 		{
 			File:     "internal_workflow_testsuite.go",
-			Function: "go.temporal.io/sdk/internal.(*testWorkflowEnvironmentImpl).handleActivityResult",
+			Function: "github.com/bubo-squared/temporal-go-sdk/internal.(*testWorkflowEnvironmentImpl).handleActivityResult",
 		},
 		{
 			File:     "logger_test.go",
-			Function: "go.temporal.io/sdk/test_test.logWorkflow",
+			Function: "github.com/bubo-squared/temporal-go-sdk/test_test.logWorkflow",
 		},
 	}
 

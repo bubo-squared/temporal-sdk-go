@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"testing"
 
-	"go.temporal.io/sdk/contrib/tools/workflowcheck/determinism"
+	"github.com/bubo-squared/temporal-go-sdk/contrib/tools/workflowcheck/determinism"
 	"golang.org/x/tools/go/analysis/analysistest"
 )
 

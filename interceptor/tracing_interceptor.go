@@ -8,11 +8,11 @@ import (
 	"github.com/nexus-rpc/sdk-go/nexus"
 	commonpb "go.temporal.io/api/common/v1"
 
-	"go.temporal.io/sdk/activity"
-	"go.temporal.io/sdk/client"
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/log"
-	"go.temporal.io/sdk/workflow"
+	"github.com/bubo-squared/temporal-go-sdk/activity"
+	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/workflow"
 )
 
 const (

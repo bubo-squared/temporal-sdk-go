@@ -1,6 +1,6 @@
 package temporal
 
-import "go.temporal.io/sdk/internal"
+import "github.com/bubo-squared/temporal-go-sdk/internal"
 
 type (
 	// SearchAttributes represents a collection of typed search attributes. Create with [NewSearchAttributes].

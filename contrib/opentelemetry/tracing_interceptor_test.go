@@ -11,10 +11,10 @@ import (
 	"go.opentelemetry.io/otel/sdk/trace/tracetest"
 	"go.opentelemetry.io/otel/trace"
 
-	"go.temporal.io/sdk/contrib/opentelemetry"
-	"go.temporal.io/sdk/interceptor"
-	"go.temporal.io/sdk/internal/interceptortest"
-	"go.temporal.io/sdk/temporal"
+	"github.com/bubo-squared/temporal-go-sdk/contrib/opentelemetry"
+	"github.com/bubo-squared/temporal-go-sdk/interceptor"
+	"github.com/bubo-squared/temporal-go-sdk/internal/interceptortest"
+	"github.com/bubo-squared/temporal-go-sdk/temporal"
 )
 
 func TestSpanPropagation(t *testing.T) {

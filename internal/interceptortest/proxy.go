@@ -9,13 +9,13 @@ import (
 	"sync"
 	"time"
 
-	"go.temporal.io/sdk/activity"
-	"go.temporal.io/sdk/client"
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/interceptor"
-	"go.temporal.io/sdk/internal/common/metrics"
-	"go.temporal.io/sdk/log"
-	"go.temporal.io/sdk/workflow"
+	"github.com/bubo-squared/temporal-go-sdk/activity"
+	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/interceptor"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/workflow"
 )
 
 // ProxyCall represents a call made to the proxy interceptor.

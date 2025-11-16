@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"time"
 
-	"go.temporal.io/sdk/internal/common/retry"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/retry"
 )
 
 const (

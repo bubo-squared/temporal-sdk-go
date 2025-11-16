@@ -7,8 +7,8 @@ import (
 	"github.com/stretchr/testify/require"
 	protocolpb "go.temporal.io/api/protocol/v1"
 	updatepb "go.temporal.io/api/update/v1"
-	"go.temporal.io/sdk/internal/common/serializer"
-	"go.temporal.io/sdk/internal/protocol"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/serializer"
+	"github.com/bubo-squared/temporal-go-sdk/internal/protocol"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/anypb"
 )

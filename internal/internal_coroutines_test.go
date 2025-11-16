@@ -15,7 +15,7 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"go.temporal.io/api/workflowservice/v1"
-	"go.temporal.io/sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
 )
 
 func createRootTestContext() (interceptor *workflowEnvironmentInterceptor, ctx Context) {
@@ -1171,7 +1171,7 @@ func TestPanic(t *testing.T) {
 	require.EqualValues(t, "simulated failure", err.Error())
 	panicError, ok := err.(*workflowPanicError)
 	require.True(t, ok)
-	require.Contains(t, panicError.StackTrace(), "go.temporal.io/sdk/internal.TestPanic")
+	require.Contains(t, panicError.StackTrace(), "github.com/bubo-squared/temporal-go-sdk/internal.TestPanic")
 }
 
 func TestChannelReceivePointer(t *testing.T) {

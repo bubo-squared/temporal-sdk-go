@@ -6,9 +6,9 @@ import (
 
 	"github.com/nexus-rpc/sdk-go/nexus"
 	"github.com/stretchr/testify/require"
-	"go.temporal.io/sdk/client"
-	"go.temporal.io/sdk/temporalnexus"
-	"go.temporal.io/sdk/workflow"
+	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-go-sdk/temporalnexus"
+	"github.com/bubo-squared/temporal-go-sdk/workflow"
 )
 
 func TestNewWorkflowRunOperationWithOptions(t *testing.T) {

@@ -14,8 +14,8 @@ import (
 	enumspb "go.temporal.io/api/enums/v1"
 	failurepb "go.temporal.io/api/failure/v1"
 	historypb "go.temporal.io/api/history/v1"
-	"go.temporal.io/sdk/converter"
-	ilog "go.temporal.io/sdk/internal/log"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
 )
 
 const (

@@ -1,8 +1,8 @@
 package mocks
 
 import (
-	"go.temporal.io/sdk/client"
-	"go.temporal.io/sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
 )
 
 // make sure mocks are in sync with interfaces

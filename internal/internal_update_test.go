@@ -12,8 +12,8 @@ import (
 	protocolpb "go.temporal.io/api/protocol/v1"
 	updatepb "go.temporal.io/api/update/v1"
 	"go.temporal.io/api/workflowservice/v1"
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/internal/protocol"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/internal/protocol"
 )
 
 func mustSetUpdateHandler(

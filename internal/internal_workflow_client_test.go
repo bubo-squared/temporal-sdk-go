@@ -15,7 +15,7 @@ import (
 	"google.golang.org/grpc/connectivity"
 	"google.golang.org/grpc/status"
 
-	ilog "go.temporal.io/sdk/internal/log"
+	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
 
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
@@ -27,10 +27,10 @@ import (
 	"go.temporal.io/api/workflowservice/v1"
 	"go.temporal.io/api/workflowservicemock/v1"
 
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/internal/common/metrics"
-	"go.temporal.io/sdk/internal/common/serializer"
-	iconverter "go.temporal.io/sdk/internal/converter"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/serializer"
+	iconverter "github.com/bubo-squared/temporal-go-sdk/internal/converter"
 )
 
 const (

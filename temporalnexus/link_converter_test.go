@@ -10,7 +10,7 @@ import (
 	"github.com/stretchr/testify/require"
 	commonpb "go.temporal.io/api/common/v1"
 	enumspb "go.temporal.io/api/enums/v1"
-	"go.temporal.io/sdk/temporalnexus"
+	"github.com/bubo-squared/temporal-go-sdk/temporalnexus"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 

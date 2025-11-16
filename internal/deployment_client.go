@@ -12,7 +12,7 @@ import (
 //
 // NOTE: Experimental
 //
-// Exposed as: [go.temporal.io/sdk/client.DeploymentReachability]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentReachability]
 type DeploymentReachability int
 
 const (
@@ -20,7 +20,7 @@ const (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentReachabilityUnspecified]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentReachabilityUnspecified]
 	DeploymentReachabilityUnspecified = iota
 
 	// DeploymentReachabilityReachable - The deployment is reachable by new
@@ -28,7 +28,7 @@ const (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentReachabilityReachable]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentReachabilityReachable]
 	DeploymentReachabilityReachable
 
 	// DeploymentReachabilityClosedWorkflows - The deployment is not reachable
@@ -38,7 +38,7 @@ const (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentReachabilityClosedWorkflows]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentReachabilityClosedWorkflows]
 	DeploymentReachabilityClosedWorkflows
 
 	// DeploymentReachabilityUnreachable - The deployment is not reachable by
@@ -48,7 +48,7 @@ const (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentReachabilityUnreachable]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentReachabilityUnreachable]
 	DeploymentReachabilityUnreachable
 )
 
@@ -58,7 +58,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.Deployment]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.Deployment]
 	Deployment struct {
 		// SeriesName - Name of the deployment series. Different versions of the same worker
 		// service/application are linked together by sharing a series name.
@@ -73,7 +73,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentTaskQueueInfo]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentTaskQueueInfo]
 	DeploymentTaskQueueInfo struct {
 		// Name - Task queue name.
 		Name string
@@ -93,7 +93,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentInfo]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentInfo]
 	DeploymentInfo struct {
 		// Deployment - An identifier for this deployment.
 		Deployment Deployment
@@ -115,7 +115,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentDescription]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentDescription]
 	DeploymentDescription struct {
 		// DeploymentInfo - Information associated with workers in this deployment.
 		DeploymentInfo DeploymentInfo
@@ -125,7 +125,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentListEntry]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentListEntry]
 	DeploymentListEntry struct {
 		// An identifier for this deployment.
 		Deployment Deployment
@@ -152,7 +152,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentListOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentListOptions]
 	DeploymentListOptions struct {
 		// PageSize - How many results to fetch from the Server at a time.
 		//
@@ -169,7 +169,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentReachabilityInfo]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentReachabilityInfo]
 	DeploymentReachabilityInfo struct {
 		// DeploymentInfo - Information about the deployment.
 		DeploymentInfo DeploymentInfo
@@ -188,7 +188,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentMetadataUpdate]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentMetadataUpdate]
 	DeploymentMetadataUpdate struct {
 		// UpsertEntries - Metadata entries inserted or modified. When values are not
 		// of type *commonpb.Payload, the client data converter will be used to generate
@@ -203,7 +203,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentGetCurrentResponse]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentGetCurrentResponse]
 	DeploymentGetCurrentResponse struct {
 		// DeploymentInfo - Information about the current deployment.
 		DeploymentInfo DeploymentInfo
@@ -213,7 +213,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentSetCurrentOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentSetCurrentOptions]
 	DeploymentSetCurrentOptions struct {
 		// Deployment - An identifier for this deployment.
 		Deployment Deployment
@@ -227,7 +227,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentSetCurrentResponse]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentSetCurrentResponse]
 	DeploymentSetCurrentResponse struct {
 		// Current - Information about the current deployment after this operation.
 		Current DeploymentInfo
@@ -240,7 +240,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentDescribeOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentDescribeOptions]
 	DeploymentDescribeOptions struct {
 		// Deployment - Identifier that combines the deployment series name with their Build ID.
 		Deployment Deployment
@@ -250,7 +250,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentGetReachabilityOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentGetReachabilityOptions]
 	DeploymentGetReachabilityOptions struct {
 		// Deployment - Identifier that combines the deployment series name with their Build ID.
 		Deployment Deployment
@@ -260,7 +260,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.DeploymentGetCurrentOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.DeploymentGetCurrentOptions]
 	DeploymentGetCurrentOptions struct {
 		// SeriesName - Name of the deployment series.
 		SeriesName string

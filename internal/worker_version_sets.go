@@ -10,7 +10,7 @@ import (
 
 // A stand-in for a Build Id for unversioned Workers.
 //
-// Exposed as: [go.temporal.io/sdk/client.UnversionedBuildID]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.UnversionedBuildID]
 const UnversionedBuildID = ""
 
 // VersioningIntent indicates whether the user intends certain commands to be run on
@@ -18,7 +18,7 @@ const UnversionedBuildID = ""
 //
 // Deprecated: Build-id based versioning is deprecated in favor of worker deployment based versioning and will be removed soon.
 //
-// Exposed as: [go.temporal.io/sdk/temporal.VersioningIntent]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.VersioningIntent]
 type VersioningIntent int
 
 const (
@@ -28,7 +28,7 @@ const (
 	//
 	// Deprecated: Build-id based versioning is deprecated in favor of worker deployment based versioning and will be removed soon.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.VersioningIntentUnspecified]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.VersioningIntentUnspecified]
 	VersioningIntentUnspecified VersioningIntent = iota
 	// VersioningIntentCompatible indicates that the command should run on a worker with compatible
 	// version if possible. It may not be possible if the target task queue does not also have
@@ -36,14 +36,14 @@ const (
 	//
 	// Deprecated: This has the same effect as [VersioningIntentInheritBuildID], use that instead.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.VersioningIntentCompatible]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.VersioningIntentCompatible]
 	VersioningIntentCompatible
 	// VersioningIntentDefault indicates that the command should run on the target task queue's
 	// current overall-default build ID.
 	//
 	// Deprecated: This has the same effect as [VersioningIntentUseAssignmentRules], use that instead.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.VersioningIntentDefault]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.VersioningIntentDefault]
 	VersioningIntentDefault
 	// VersioningIntentInheritBuildID indicates the command should inherit the current Build ID of the
 	// Workflow triggering it, and not use Assignment Rules. (Redirect Rules are still applicable)
@@ -51,7 +51,7 @@ const (
 	//
 	// Deprecated: Build-id based versioning is deprecated in favor of worker deployment based versioning and will be removed soon.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.VersioningIntentInheritBuildID]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.VersioningIntentInheritBuildID]
 	VersioningIntentInheritBuildID
 	// VersioningIntentUseAssignmentRules indicates the command should use the latest Assignment Rules
 	// to select a Build ID independently of the workflow triggering it.
@@ -59,37 +59,37 @@ const (
 	//
 	// Deprecated: Build-id based versioning is deprecated in favor of worker deployment based versioning and will be removed soon.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.VersioningIntentUseAssignmentRules]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.VersioningIntentUseAssignmentRules]
 	VersioningIntentUseAssignmentRules
 )
 
 // TaskReachability specifies which category of tasks may reach a worker on a versioned task queue.
 // Used both in a reachability query and its response.
 //
-// Exposed as: [go.temporal.io/sdk/client.TaskReachability]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.TaskReachability]
 type TaskReachability int
 
 const (
 	// TaskReachabilityUnspecified indicates the reachability was not specified
 	//
-	// Exposed as: [go.temporal.io/sdk/client.TaskReachabilityUnspecified]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.TaskReachabilityUnspecified]
 	TaskReachabilityUnspecified = iota
 	// TaskReachabilityNewWorkflows indicates the Build Id might be used by new workflows
 	//
-	// Exposed as: [go.temporal.io/sdk/client.TaskReachabilityNewWorkflows]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.TaskReachabilityNewWorkflows]
 	TaskReachabilityNewWorkflows
 	// TaskReachabilityExistingWorkflows indicates the Build Id might be used by open workflows
 	// and/or closed workflows.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.TaskReachabilityExistingWorkflows]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.TaskReachabilityExistingWorkflows]
 	TaskReachabilityExistingWorkflows
 	// TaskReachabilityOpenWorkflows indicates the Build Id might be used by open workflows.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.TaskReachabilityOpenWorkflows]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.TaskReachabilityOpenWorkflows]
 	TaskReachabilityOpenWorkflows
 	// TaskReachabilityClosedWorkflows indicates the Build Id might be used by closed workflows
 	//
-	// Exposed as: [go.temporal.io/sdk/client.TaskReachabilityClosedWorkflows]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.TaskReachabilityClosedWorkflows]
 	TaskReachabilityClosedWorkflows
 )
 
@@ -97,7 +97,7 @@ type (
 	// UpdateWorkerBuildIdCompatibilityOptions is the input to
 	// Client.UpdateWorkerBuildIdCompatibility.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.UpdateWorkerBuildIdCompatibilityOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.UpdateWorkerBuildIdCompatibilityOptions]
 	UpdateWorkerBuildIdCompatibilityOptions struct {
 		// The task queue to update the version sets of.
 		TaskQueue string
@@ -116,24 +116,24 @@ type (
 		targetedBuildId() string
 	}
 	//
-	// Exposed as: [go.temporal.io/sdk/client.BuildIDOpAddNewIDInNewDefaultSet]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.BuildIDOpAddNewIDInNewDefaultSet]
 	BuildIDOpAddNewIDInNewDefaultSet struct {
 		BuildID string
 	}
 	//
-	// Exposed as: [go.temporal.io/sdk/client.BuildIDOpAddNewCompatibleVersion]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.BuildIDOpAddNewCompatibleVersion]
 	BuildIDOpAddNewCompatibleVersion struct {
 		BuildID                   string
 		ExistingCompatibleBuildID string
 		MakeSetDefault            bool
 	}
 	//
-	// Exposed as: [go.temporal.io/sdk/client.BuildIDOpPromoteSet]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.BuildIDOpPromoteSet]
 	BuildIDOpPromoteSet struct {
 		BuildID string
 	}
 	//
-	// Exposed as: [go.temporal.io/sdk/client.BuildIDOpPromoteIDWithinSet]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.BuildIDOpPromoteIDWithinSet]
 	BuildIDOpPromoteIDWithinSet struct {
 		BuildID string
 	}
@@ -181,13 +181,13 @@ func (uw *UpdateWorkerBuildIdCompatibilityOptions) validateAndConvertToProto() (
 	return req, nil
 }
 
-// Exposed as: [go.temporal.io/sdk/client.GetWorkerBuildIdCompatibilityOptions]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.GetWorkerBuildIdCompatibilityOptions]
 type GetWorkerBuildIdCompatibilityOptions struct {
 	TaskQueue string
 	MaxSets   int
 }
 
-// Exposed as: [go.temporal.io/sdk/client.GetWorkerTaskReachabilityOptions]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.GetWorkerTaskReachabilityOptions]
 type GetWorkerTaskReachabilityOptions struct {
 	// BuildIDs - The build IDs to query the reachability of. At least one build ID must be provided.
 	BuildIDs []string
@@ -202,14 +202,14 @@ type GetWorkerTaskReachabilityOptions struct {
 	Reachability TaskReachability
 }
 
-// Exposed as: [go.temporal.io/sdk/client.WorkerTaskReachability]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerTaskReachability]
 type WorkerTaskReachability struct {
 	// BuildIDReachability - map of build IDs and their reachability information
 	// May contain an entry with UnversionedBuildID for an unversioned worker
 	BuildIDReachability map[string]*BuildIDReachability
 }
 
-// Exposed as: [go.temporal.io/sdk/client.BuildIDReachability]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.BuildIDReachability]
 type BuildIDReachability struct {
 	// TaskQueueReachable map of task queues and their reachability information.
 	TaskQueueReachable map[string]*TaskQueueReachability
@@ -218,7 +218,7 @@ type BuildIDReachability struct {
 	UnretrievedTaskQueues []string
 }
 
-// Exposed as: [go.temporal.io/sdk/client.TaskQueueReachability]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.TaskQueueReachability]
 type TaskQueueReachability struct {
 	// TaskQueueReachability for a worker in a single task queue.
 	// If TaskQueueReachability is empty, this worker is considered unreachable in this task queue.
@@ -228,7 +228,7 @@ type TaskQueueReachability struct {
 // WorkerBuildIDVersionSets is the response for Client.GetWorkerBuildIdCompatibility and represents the sets
 // of worker build id based versions.
 //
-// Exposed as: [go.temporal.io/sdk/client.WorkerBuildIDVersionSets]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerBuildIDVersionSets]
 type WorkerBuildIDVersionSets struct {
 	Sets []*CompatibleVersionSet
 }

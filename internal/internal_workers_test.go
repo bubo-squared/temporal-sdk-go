@@ -22,8 +22,8 @@ import (
 	"go.temporal.io/api/workflowservice/v1"
 	"go.temporal.io/api/workflowservicemock/v1"
 
-	"go.temporal.io/sdk/converter"
-	ilog "go.temporal.io/sdk/internal/log"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
 )
 
 // ActivityTaskHandler never returns response

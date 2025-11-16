@@ -17,9 +17,9 @@ import (
 	"go.temporal.io/api/serviceerror"
 	"google.golang.org/protobuf/proto"
 
-	"go.temporal.io/sdk/converter"
-	iconverter "go.temporal.io/sdk/internal/converter"
-	ilog "go.temporal.io/sdk/internal/log"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	iconverter "github.com/bubo-squared/temporal-go-sdk/internal/converter"
+	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
 )
 
 type WorkflowTestSuiteUnitTest struct {

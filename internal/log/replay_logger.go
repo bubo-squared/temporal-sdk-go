@@ -1,7 +1,7 @@
 package log
 
 import (
-	"go.temporal.io/sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/log"
 )
 
 var _ log.Logger = (*ReplayLogger)(nil)

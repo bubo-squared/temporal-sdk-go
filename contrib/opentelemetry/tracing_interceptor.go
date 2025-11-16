@@ -12,9 +12,9 @@ import (
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
 
-	"go.temporal.io/sdk/interceptor"
-	"go.temporal.io/sdk/log"
-	"go.temporal.io/sdk/temporal"
+	"github.com/bubo-squared/temporal-go-sdk/interceptor"
+	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/temporal"
 )
 
 // DefaultTextMapPropagator is the default OpenTelemetry TextMapPropagator used

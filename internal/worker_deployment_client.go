@@ -13,7 +13,7 @@ import (
 //
 // NOTE: Experimental
 //
-// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentVersionDrainageStatus]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentVersionDrainageStatus]
 type WorkerDeploymentVersionDrainageStatus int
 
 const (
@@ -21,7 +21,7 @@ const (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentVersionDrainageStatusUnspecified]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentVersionDrainageStatusUnspecified]
 	WorkerDeploymentVersionDrainageStatusUnspecified = iota
 
 	// WorkerDeploymentVersionDrainageStatusDraining - The Worker Deployment Version is not
@@ -30,7 +30,7 @@ const (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentVersionDrainageStatusDraining]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentVersionDrainageStatusDraining]
 	WorkerDeploymentVersionDrainageStatusDraining
 
 	// WorkerDeploymentVersionDrainageStatusDrained - The Worker Deployment Version is not
@@ -41,7 +41,7 @@ const (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentVersionDrainageStatusDrained]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentVersionDrainageStatusDrained]
 	WorkerDeploymentVersionDrainageStatusDrained
 )
 
@@ -51,7 +51,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentDescribeOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentDescribeOptions]
 	WorkerDeploymentDescribeOptions struct {
 	}
 
@@ -59,7 +59,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentVersionSummary]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentVersionSummary]
 	WorkerDeploymentVersionSummary struct {
 		// Version - The version
 		Version WorkerDeploymentVersion
@@ -76,7 +76,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentInfo]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentInfo]
 	WorkerDeploymentInfo struct {
 		// Name - Identifies a Worker Deployment. Must be unique within the namespace. Cannot
 		// contain ".", a reserved character.
@@ -110,7 +110,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentDescribeResponse]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentDescribeResponse]
 	WorkerDeploymentDescribeResponse struct {
 		// ConflictToken - Token to serialize Worker Deployment operations.
 		ConflictToken []byte
@@ -124,7 +124,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentSetCurrentVersionOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentSetCurrentVersionOptions]
 	WorkerDeploymentSetCurrentVersionOptions struct {
 		// BuildID - A Build ID within this deployment to set as the current version. If empty, the
 		// current version will target unversioned workers.
@@ -174,7 +174,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentSetCurrentVersionResponse]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentSetCurrentVersionResponse]
 	WorkerDeploymentSetCurrentVersionResponse struct {
 		// ConflictToken - Token to serialize Worker Deployment operations.
 		ConflictToken []byte
@@ -188,7 +188,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentSetRampingVersionOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentSetRampingVersionOptions]
 	WorkerDeploymentSetRampingVersionOptions struct {
 		// BuildID - A Build ID within this deployment to set as the ramping version. If empty, the
 		// current version will target unversioned workers.
@@ -241,7 +241,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentSetRampingVersionResponse]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentSetRampingVersionResponse]
 	WorkerDeploymentSetRampingVersionResponse struct {
 		// ConflictToken - Token to serialize Worker Deployment operations.
 		ConflictToken []byte
@@ -258,7 +258,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentSetManagerIdentityOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentSetManagerIdentityOptions]
 	WorkerDeploymentSetManagerIdentityOptions struct {
 		// ManagerIdentity - string to set as the Worker Deployment's ManagerIdentity.
 		// An empty string will clear the ManagerIdentity field.
@@ -292,7 +292,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentSetManagerIdentityResponse]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentSetManagerIdentityResponse]
 	WorkerDeploymentSetManagerIdentityResponse struct {
 		// ConflictToken - Token to serialize Worker Deployment operations.
 		ConflictToken []byte
@@ -306,7 +306,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentDescribeVersionOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentDescribeVersionOptions]
 	WorkerDeploymentDescribeVersionOptions struct {
 		// BuildID - A Build ID within this deployment to describe.
 		BuildID string
@@ -317,7 +317,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentTaskQueueInfo]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentTaskQueueInfo]
 	WorkerDeploymentTaskQueueInfo struct {
 		// Name - Task queue name.
 		Name string
@@ -331,7 +331,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentVersionDrainageInfo]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentVersionDrainageInfo]
 	WorkerDeploymentVersionDrainageInfo struct {
 		// DrainageStatus - The Worker Deployment Version drainage status to guarantee safe
 		// decommission of this Version.
@@ -349,7 +349,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentVersionInfo]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentVersionInfo]
 	WorkerDeploymentVersionInfo struct {
 		// Version - A Deployment Version identifier.
 		Version WorkerDeploymentVersion
@@ -387,7 +387,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentVersionDescription]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentVersionDescription]
 	WorkerDeploymentVersionDescription struct {
 		// Info - Information about this Version.
 		Info WorkerDeploymentVersionInfo
@@ -398,7 +398,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentDeleteVersionOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentDeleteVersionOptions]
 	WorkerDeploymentDeleteVersionOptions struct {
 		// BuildID - A Build ID within this deployment to delete.
 		BuildID string
@@ -419,7 +419,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentDeleteVersionResponse]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentDeleteVersionResponse]
 	WorkerDeploymentDeleteVersionResponse struct {
 	}
 
@@ -428,7 +428,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentMetadataUpdate]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentMetadataUpdate]
 	WorkerDeploymentMetadataUpdate struct {
 		// UpsertEntries - Metadata entries inserted or modified. When values are not
 		// of type *commonpb.Payload, the client data converter will be used to generate
@@ -444,7 +444,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentUpdateVersionMetadataOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentUpdateVersionMetadataOptions]
 	WorkerDeploymentUpdateVersionMetadataOptions struct {
 		// Version - the deployment version to target.
 		Version WorkerDeploymentVersion
@@ -458,7 +458,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentUpdateVersionMetadataResponse]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentUpdateVersionMetadataResponse]
 	WorkerDeploymentUpdateVersionMetadataResponse struct {
 		// Metadata - A user-defined set of key-values after the update.
 		Metadata map[string]*commonpb.Payload
@@ -468,7 +468,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentHandle]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentHandle]
 	WorkerDeploymentHandle interface {
 		// Describe returns a description of this Worker Deployment.
 		//
@@ -519,7 +519,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentListOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentListOptions]
 	WorkerDeploymentListOptions struct {
 		// PageSize - How many results to fetch from the Server at a time.
 		//
@@ -532,7 +532,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentRoutingConfig]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentRoutingConfig]
 	WorkerDeploymentRoutingConfig struct {
 		// CurrentVersion - Specifies which Deployment Version should receive new workflow
 		// executions and tasks of existing unversioned or AutoUpgrade workflows.
@@ -572,7 +572,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentListEntry]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentListEntry]
 	WorkerDeploymentListEntry struct {
 		// Name - The deployment name.
 		Name string
@@ -588,7 +588,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentListIterator]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentListIterator]
 	WorkerDeploymentListIterator interface {
 		// HasNext - Return whether this iterator has next value.
 		HasNext() bool
@@ -601,7 +601,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentDeleteOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentDeleteOptions]
 	WorkerDeploymentDeleteOptions struct {
 		// Name - The name of the deployment to be deleted.
 		Name string
@@ -616,7 +616,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentDeleteResponse]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentDeleteResponse]
 	WorkerDeploymentDeleteResponse struct {
 	}
 
@@ -624,7 +624,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerDeploymentClient]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerDeploymentClient]
 	WorkerDeploymentClient interface {
 		// List returns an iterator to enumerate Worker Deployments in the client's namespace.
 		//

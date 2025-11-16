@@ -7,7 +7,7 @@ const (
 	// SDKVersion is a semver (https://semver.org/) that represents the version of this Temporal GoSDK.
 	// Server validates if SDKVersion fits its supported range and rejects request if it doesn't.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.SDKVersion]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.SDKVersion]
 	SDKVersion = "1.37.0"
 
 	// SDKName represents the name of the SDK.

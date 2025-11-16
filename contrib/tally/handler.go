@@ -3,7 +3,7 @@ package tally
 
 import (
 	"github.com/uber-go/tally/v4"
-	"go.temporal.io/sdk/client"
+	"github.com/bubo-squared/temporal-go-sdk/client"
 )
 
 type metricsHandler struct{ scope tally.Scope }
@@ -26,7 +26,7 @@ func NewMetricsHandler(scope tally.Scope) client.MetricsHandler {
 }
 
 // ScopeFromHandler returns the underlying scope of the handler. Callers may
-// need to check [go.temporal.io/sdk/workflow.IsReplaying] to avoid recording metrics during
+// need to check [github.com/bubo-squared/temporal-go-sdk/workflow.IsReplaying] to avoid recording metrics during
 // replay. If this handler was not created via this package, [github.com/uber-go/tally.NoopScope] is
 // returned.
 //

@@ -35,26 +35,26 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/proto"
 
-	"go.temporal.io/sdk/contrib/opentelemetry"
-	sdkopentracing "go.temporal.io/sdk/contrib/opentracing"
-	"go.temporal.io/sdk/contrib/resourcetuner"
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/test"
+	"github.com/bubo-squared/temporal-go-sdk/contrib/opentelemetry"
+	sdkopentracing "github.com/bubo-squared/temporal-go-sdk/contrib/opentracing"
+	"github.com/bubo-squared/temporal-go-sdk/contrib/resourcetuner"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/test"
 
 	historypb "go.temporal.io/api/history/v1"
 	sdkpb "go.temporal.io/api/sdk/v1"
 
-	"go.temporal.io/sdk/activity"
-	"go.temporal.io/sdk/client"
-	contribtally "go.temporal.io/sdk/contrib/tally"
-	"go.temporal.io/sdk/interceptor"
-	"go.temporal.io/sdk/internal"
-	"go.temporal.io/sdk/internal/common/metrics"
-	"go.temporal.io/sdk/internal/interceptortest"
-	ilog "go.temporal.io/sdk/internal/log"
-	"go.temporal.io/sdk/temporal"
-	"go.temporal.io/sdk/worker"
-	"go.temporal.io/sdk/workflow"
+	"github.com/bubo-squared/temporal-go-sdk/activity"
+	"github.com/bubo-squared/temporal-go-sdk/client"
+	contribtally "github.com/bubo-squared/temporal-go-sdk/contrib/tally"
+	"github.com/bubo-squared/temporal-go-sdk/interceptor"
+	"github.com/bubo-squared/temporal-go-sdk/internal"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/internal/interceptortest"
+	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
+	"github.com/bubo-squared/temporal-go-sdk/temporal"
+	"github.com/bubo-squared/temporal-go-sdk/worker"
+	"github.com/bubo-squared/temporal-go-sdk/workflow"
 )
 
 var usingCLIDevServerFlag bool
@@ -118,7 +118,7 @@ func (ts *IntegrationTestSuite) TearDownSuite() {
 			ts.FailNow("leaks timed out but no error, should be impossible")
 		case <-time.After(time.Second):
 			// https://github.com/temporalio/go-sdk/issues/51
-			last = goleak.Find(goleak.IgnoreTopFunction("go.temporal.io/sdk/internal.(*coroutineState).initialYield"))
+			last = goleak.Find(goleak.IgnoreTopFunction("github.com/bubo-squared/temporal-go-sdk/internal.(*coroutineState).initialYield"))
 			if last == nil {
 				// no leak, done waiting
 				return
@@ -781,7 +781,7 @@ func (ts *IntegrationTestSuite) TestStackTraceQuery() {
 	ts.NotNil(value)
 	var trace string
 	ts.Nil(value.Get(&trace))
-	ts.True(strings.Contains(trace, "go.temporal.io/sdk/test_test.(*Workflows).Basic"), trace)
+	ts.True(strings.Contains(trace, "github.com/bubo-squared/temporal-go-sdk/test_test.(*Workflows).Basic"), trace)
 }
 
 func (ts *IntegrationTestSuite) TestConsistentQuery() {

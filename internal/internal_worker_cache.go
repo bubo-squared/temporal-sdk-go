@@ -4,7 +4,7 @@ import (
 	"runtime"
 	"sync"
 
-	"go.temporal.io/sdk/internal/common/cache"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/cache"
 )
 
 // A WorkerCache instance is held by each worker to hold cached data. The contents of this struct should always be

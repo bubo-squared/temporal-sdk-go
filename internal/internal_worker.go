@@ -29,12 +29,12 @@ import (
 	"go.temporal.io/api/workflowservicemock/v1"
 	"google.golang.org/protobuf/proto"
 
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/internal/common/metrics"
-	"go.temporal.io/sdk/internal/common/serializer"
-	"go.temporal.io/sdk/internal/common/util"
-	ilog "go.temporal.io/sdk/internal/log"
-	"go.temporal.io/sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/serializer"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/util"
+	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
+	"github.com/bubo-squared/temporal-go-sdk/log"
 )
 
 const (
@@ -216,7 +216,7 @@ type (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/worker.WorkerDeploymentVersion]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.WorkerDeploymentVersion]
 	WorkerDeploymentVersion struct {
 		// The name of the deployment this worker version belongs to
 		DeploymentName string

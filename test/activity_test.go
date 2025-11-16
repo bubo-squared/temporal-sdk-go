@@ -13,12 +13,12 @@ import (
 	"go.opentelemetry.io/otel/baggage"
 	commonpb "go.temporal.io/api/common/v1"
 	"go.temporal.io/api/workflowservice/v1"
-	"go.temporal.io/sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
 
-	"go.temporal.io/sdk/activity"
-	"go.temporal.io/sdk/client"
-	"go.temporal.io/sdk/temporal"
-	"go.temporal.io/sdk/worker"
+	"github.com/bubo-squared/temporal-go-sdk/activity"
+	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-go-sdk/temporal"
+	"github.com/bubo-squared/temporal-go-sdk/worker"
 )
 
 type Activities struct {

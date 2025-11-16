@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.temporal.io/sdk/client"
-	"go.temporal.io/sdk/internal/log"
+	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-go-sdk/internal/log"
 )
 
 func TestWaitServerReady_respectsTimeout(t *testing.T) {

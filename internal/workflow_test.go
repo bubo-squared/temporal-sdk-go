@@ -14,7 +14,7 @@ import (
 	commonpb "go.temporal.io/api/common/v1"
 	"go.temporal.io/api/enums/v1"
 
-	"go.temporal.io/sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
 )
 
 func TestGetChildWorkflowOptions(t *testing.T) {

@@ -5,8 +5,8 @@ import (
 	"context"
 
 	commonpb "go.temporal.io/api/common/v1"
-	"go.temporal.io/sdk/internal"
-	"go.temporal.io/sdk/workflow"
+	"github.com/bubo-squared/temporal-go-sdk/internal"
+	"github.com/bubo-squared/temporal-go-sdk/workflow"
 )
 
 // Interceptor is a common interface for all interceptors. It combines

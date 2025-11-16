@@ -12,21 +12,21 @@ import (
 	enumspb "go.temporal.io/api/enums/v1"
 	failurepb "go.temporal.io/api/failure/v1"
 
-	"go.temporal.io/sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
 )
 
 var defaultFailureConverter = NewDefaultFailureConverter(DefaultFailureConverterOptions{})
 
 // GetDefaultFailureConverter returns the default failure converter used by Temporal.
 //
-// Exposed as: [go.temporal.io/sdk/temporal.GetDefaultFailureConverter]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.GetDefaultFailureConverter]
 func GetDefaultFailureConverter() converter.FailureConverter {
 	return defaultFailureConverter
 }
 
 // DefaultFailureConverterOptions are optional parameters for DefaultFailureConverter creation.
 //
-// Exposed as: [go.temporal.io/sdk/temporal.DefaultFailureConverterOptions]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.DefaultFailureConverterOptions]
 type DefaultFailureConverterOptions struct {
 	// Optional: Sets DataConverter to customize serialization/deserialization of fields.
 	//
@@ -41,7 +41,7 @@ type DefaultFailureConverterOptions struct {
 
 // DefaultFailureConverter seralizes errors with the option to encode common parameters under Failure.EncodedAttributes
 //
-// Exposed as: [go.temporal.io/sdk/temporal.DefaultFailureConverter]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.DefaultFailureConverter]
 type DefaultFailureConverter struct {
 	dataConverter          converter.DataConverter
 	encodeCommonAttributes bool
@@ -49,7 +49,7 @@ type DefaultFailureConverter struct {
 
 // NewDefaultFailureConverter creates new instance of DefaultFailureConverter.
 //
-// Exposed as: [go.temporal.io/sdk/temporal.NewDefaultFailureConverter]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.NewDefaultFailureConverter]
 func NewDefaultFailureConverter(opt DefaultFailureConverterOptions) *DefaultFailureConverter {
 	if opt.DataConverter == nil {
 		opt.DataConverter = converter.GetDefaultDataConverter()

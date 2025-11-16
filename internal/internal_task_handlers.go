@@ -26,13 +26,13 @@ import (
 	"go.temporal.io/api/workflowservice/v1"
 	"google.golang.org/protobuf/types/known/durationpb"
 
-	"go.temporal.io/sdk/internal/common/retry"
-	"go.temporal.io/sdk/internal/protocol"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/retry"
+	"github.com/bubo-squared/temporal-go-sdk/internal/protocol"
 
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/internal/common/metrics"
-	"go.temporal.io/sdk/internal/common/util"
-	"go.temporal.io/sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/util"
+	"github.com/bubo-squared/temporal-go-sdk/log"
 )
 
 const (

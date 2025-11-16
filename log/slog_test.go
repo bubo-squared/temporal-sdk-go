@@ -46,7 +46,7 @@ func TestTemporalSlogAdapter(t *testing.T) {
 			"msg":   "info log",
 			"source": map[string]string{
 				"file":     "log/slog_test.go",
-				"function": "go.temporal.io/sdk/log.TestTemporalSlogAdapter",
+				"function": "github.com/bubo-squared/temporal-go-sdk/log.TestTemporalSlogAdapter",
 				"line":     "",
 			},
 			"time": "",
@@ -56,7 +56,7 @@ func TestTemporalSlogAdapter(t *testing.T) {
 			"msg":   "calling AddCallerDepth",
 			"source": map[string]string{
 				"file":     "log/slog_test.go",
-				"function": "go.temporal.io/sdk/log.addCallerDepth",
+				"function": "github.com/bubo-squared/temporal-go-sdk/log.addCallerDepth",
 				"line":     "",
 			},
 			"time": "",
@@ -66,7 +66,7 @@ func TestTemporalSlogAdapter(t *testing.T) {
 			"msg":   "calling AddCallerDepth",
 			"source": map[string]string{
 				"file":     "log/slog_test.go",
-				"function": "go.temporal.io/sdk/log.TestTemporalSlogAdapter",
+				"function": "github.com/bubo-squared/temporal-go-sdk/log.TestTemporalSlogAdapter",
 				"line":     "",
 			},
 			"time": "",
@@ -77,7 +77,7 @@ func TestTemporalSlogAdapter(t *testing.T) {
 			"msg":     "With",
 			"source": map[string]string{
 				"file":     "log/slog_test.go",
-				"function": "go.temporal.io/sdk/log.TestTemporalSlogAdapter",
+				"function": "github.com/bubo-squared/temporal-go-sdk/log.TestTemporalSlogAdapter",
 				"line":     "",
 			},
 			"time": "",
@@ -89,7 +89,7 @@ func TestTemporalSlogAdapter(t *testing.T) {
 			"msg":      "debug log",
 			"source": map[string]string{
 				"file":     "log/slog_test.go",
-				"function": "go.temporal.io/sdk/log.TestTemporalSlogAdapter",
+				"function": "github.com/bubo-squared/temporal-go-sdk/log.TestTemporalSlogAdapter",
 				"line":     "",
 			},
 			"time": "",

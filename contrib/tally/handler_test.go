@@ -8,7 +8,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 	"github.com/uber-go/tally/v4"
-	contribtally "go.temporal.io/sdk/contrib/tally"
+	contribtally "github.com/bubo-squared/temporal-go-sdk/contrib/tally"
 )
 
 func TestTally(t *testing.T) {

@@ -11,8 +11,8 @@ import (
 	"github.com/stretchr/testify/suite"
 	enumspb "go.temporal.io/api/enums/v1"
 	"go.temporal.io/api/serviceerror"
-	"go.temporal.io/sdk/internal/common/metrics"
-	ilog "go.temporal.io/sdk/internal/log"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
 )
 
 type (

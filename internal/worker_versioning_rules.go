@@ -21,7 +21,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningRampByPercentage]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningRampByPercentage]
 	VersioningRampByPercentage struct {
 		// Percentage of traffic with a value in [0,100)
 		Percentage float32
@@ -34,7 +34,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningAssignmentRule]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningAssignmentRule]
 	VersioningAssignmentRule struct {
 		// The BuildID of new workflows affected by this rule.
 		TargetBuildID string
@@ -49,7 +49,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningAssignmentRuleWithTimestamp]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningAssignmentRuleWithTimestamp]
 	VersioningAssignmentRuleWithTimestamp struct {
 		Rule VersioningAssignmentRule
 		// The time when the server created this rule.
@@ -63,7 +63,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningRedirectRule]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningRedirectRule]
 	VersioningRedirectRule struct {
 		SourceBuildID string
 		TargetBuildID string
@@ -75,7 +75,7 @@ type (
 	//
 	// Deprecated: Build-id based versioning is deprecated in favor of worker deployment based versioning and will be removed soon.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningRedirectRuleWithTimestamp]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningRedirectRuleWithTimestamp]
 	VersioningRedirectRuleWithTimestamp struct {
 		Rule VersioningRedirectRule
 		// The time when the server created this rule.
@@ -90,7 +90,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningConflictToken]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningConflictToken]
 	VersioningConflictToken struct {
 		token []byte
 	}
@@ -101,7 +101,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.UpdateWorkerVersioningRulesOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.UpdateWorkerVersioningRulesOptions]
 	UpdateWorkerVersioningRulesOptions struct {
 		// The task queue to update the versioning rules of.
 		TaskQueue string
@@ -139,7 +139,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningOperationInsertAssignmentRule]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningOperationInsertAssignmentRule]
 	VersioningOperationInsertAssignmentRule struct {
 		RuleIndex int32
 		Rule      VersioningAssignmentRule
@@ -155,7 +155,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningOperationReplaceAssignmentRule]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningOperationReplaceAssignmentRule]
 	VersioningOperationReplaceAssignmentRule struct {
 		RuleIndex int32
 		Rule      VersioningAssignmentRule
@@ -172,7 +172,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningOperationDeleteAssignmentRule]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningOperationDeleteAssignmentRule]
 	VersioningOperationDeleteAssignmentRule struct {
 		RuleIndex int32
 		Force     bool
@@ -186,7 +186,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningOperationAddRedirectRule]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningOperationAddRedirectRule]
 	VersioningOperationAddRedirectRule struct {
 		Rule VersioningRedirectRule
 	}
@@ -198,7 +198,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningOperationReplaceRedirectRule]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningOperationReplaceRedirectRule]
 	VersioningOperationReplaceRedirectRule struct {
 		Rule VersioningRedirectRule
 	}
@@ -210,7 +210,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningOperationDeleteRedirectRule]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningOperationDeleteRedirectRule]
 	VersioningOperationDeleteRedirectRule struct {
 		SourceBuildID string
 	}
@@ -233,7 +233,7 @@ type (
 	//
 	// WARNING: Worker versioning is currently experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.VersioningOperationCommitBuildID]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.VersioningOperationCommitBuildID]
 	VersioningOperationCommitBuildID struct {
 		TargetBuildID string
 		Force         bool
@@ -327,7 +327,7 @@ func (uw *UpdateWorkerVersioningRulesOptions) validateAndConvertToProto(namespac
 //
 // WARNING: Worker versioning is currently experimental
 //
-// Exposed as: [go.temporal.io/sdk/client.GetWorkerVersioningOptions]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.GetWorkerVersioningOptions]
 type GetWorkerVersioningOptions struct {
 	// The task queue to get the versioning rules from.
 	TaskQueue string
@@ -355,7 +355,7 @@ func (gw *GetWorkerVersioningOptions) validateAndConvertToProto(namespace string
 //
 // WARNING: Worker versioning is currently experimental
 //
-// Exposed as: [go.temporal.io/sdk/client.WorkerVersioningRules]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerVersioningRules]
 type WorkerVersioningRules struct {
 	AssignmentRules []*VersioningAssignmentRuleWithTimestamp
 	RedirectRules   []*VersioningRedirectRuleWithTimestamp

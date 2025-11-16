@@ -3,9 +3,9 @@ package activity
 import (
 	"context"
 
-	"go.temporal.io/sdk/internal"
-	"go.temporal.io/sdk/internal/common/metrics"
-	"go.temporal.io/sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/internal"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/log"
 )
 
 type (
@@ -73,7 +73,7 @@ func GetMetricsHandler(ctx context.Context) metrics.Handler {
 // can check error with TimeoutType()/Details().
 //
 // Note: If using asynchronous activity completion,
-// after returning [ErrResultPending] users should heartbeat with [go.temporal.io/sdk/client.Client.RecordActivityHeartbeat]
+// after returning [ErrResultPending] users should heartbeat with [github.com/bubo-squared/temporal-go-sdk/client.Client.RecordActivityHeartbeat]
 func RecordHeartbeat(ctx context.Context, details ...interface{}) {
 	internal.RecordActivityHeartbeat(ctx, details...)
 }

@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"go.temporal.io/sdk/internal/common/retry"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/retry"
 	"google.golang.org/protobuf/types/known/durationpb"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 
@@ -23,10 +23,10 @@ import (
 	taskqueuepb "go.temporal.io/api/taskqueue/v1"
 	"go.temporal.io/api/workflowservice/v1"
 
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/internal/common/metrics"
-	"go.temporal.io/sdk/internal/common/serializer"
-	"go.temporal.io/sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/serializer"
+	"github.com/bubo-squared/temporal-go-sdk/log"
 )
 
 const (

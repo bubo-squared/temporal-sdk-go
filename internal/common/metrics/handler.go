@@ -7,7 +7,7 @@ import "time"
 // built to be a general purpose metrics abstraction for all uses.
 //
 // A common implementation is at
-// go.temporal.io/sdk/contrib/tally.NewMetricsHandler. The NopHandler is a noop
+// github.com/bubo-squared/temporal-go-sdk/contrib/tally.NewMetricsHandler. The NopHandler is a noop
 // handler. A handler may implement "Unwrap() Handler" if it wraps a handler.
 type Handler interface {
 	// WithTags returns a new handler with the given tags set for each metric

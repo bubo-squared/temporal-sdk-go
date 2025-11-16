@@ -7,10 +7,10 @@ package mocks
 import (
 	"context"
 
-	"go.temporal.io/sdk/client"
+	"github.com/bubo-squared/temporal-go-sdk/client"
 
 	"go.temporal.io/api/enums/v1"
-	"go.temporal.io/sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
 
 	"github.com/stretchr/testify/mock"
 

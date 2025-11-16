@@ -9,11 +9,11 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/mocktracer"
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 
-	"go.temporal.io/sdk/interceptor"
-	"go.temporal.io/sdk/internal/interceptortest"
-	"go.temporal.io/sdk/testsuite"
-	"go.temporal.io/sdk/worker"
-	"go.temporal.io/sdk/workflow"
+	"github.com/bubo-squared/temporal-go-sdk/interceptor"
+	"github.com/bubo-squared/temporal-go-sdk/internal/interceptortest"
+	"github.com/bubo-squared/temporal-go-sdk/testsuite"
+	"github.com/bubo-squared/temporal-go-sdk/worker"
+	"github.com/bubo-squared/temporal-go-sdk/workflow"
 )
 
 type testTracer struct {

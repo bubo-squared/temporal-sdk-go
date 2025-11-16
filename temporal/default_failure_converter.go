@@ -1,8 +1,8 @@
 package temporal
 
 import (
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/internal"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/internal"
 )
 
 type (

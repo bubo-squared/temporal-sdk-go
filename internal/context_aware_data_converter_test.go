@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"testing"
 
-	"go.temporal.io/sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
 
 	"github.com/stretchr/testify/require"
 	commonpb "go.temporal.io/api/common/v1"

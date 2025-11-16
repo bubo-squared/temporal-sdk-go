@@ -1,7 +1,7 @@
 package worker
 
 import (
-	"go.temporal.io/sdk/internal"
+	"github.com/bubo-squared/temporal-go-sdk/internal"
 )
 
 // WorkerTuner allows for the dynamic customization of some aspects of worker behavior.

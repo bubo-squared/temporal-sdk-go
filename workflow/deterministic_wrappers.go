@@ -3,7 +3,7 @@ package workflow
 import (
 	"time"
 
-	"go.temporal.io/sdk/internal"
+	"github.com/bubo-squared/temporal-go-sdk/internal"
 )
 
 type (

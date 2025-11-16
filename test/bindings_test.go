@@ -6,9 +6,9 @@ import (
 
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
-	"go.temporal.io/sdk/client"
-	"go.temporal.io/sdk/worker"
-	"go.temporal.io/sdk/workflow"
+	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-go-sdk/worker"
+	"github.com/bubo-squared/temporal-go-sdk/workflow"
 )
 
 type AsyncBindingsTestSuite struct {

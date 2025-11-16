@@ -8,12 +8,12 @@ import (
 
 	"golang.org/x/sync/semaphore"
 
-	"go.temporal.io/sdk/internal/common/metrics"
-	"go.temporal.io/sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/log"
 )
 
 // WorkerTuner allows for the dynamic customization of some aspects of worker behavior.
-// Exposed as: [go.temporal.io/sdk/worker.WorkerTuner]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.WorkerTuner]
 type WorkerTuner interface {
 	// GetWorkflowTaskSlotSupplier returns the SlotSupplier used for workflow tasks.
 	GetWorkflowTaskSlotSupplier() SlotSupplier
@@ -28,7 +28,7 @@ type WorkerTuner interface {
 }
 
 // SlotPermit is a permit to use a slot.
-// Exposed as: [go.temporal.io/sdk/worker.SlotPermit]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.SlotPermit]
 type SlotPermit struct {
 	// UserData is a field that can be used to store arbitrary on a permit by SlotSupplier
 	// implementations.
@@ -41,7 +41,7 @@ type SlotPermit struct {
 // SlotReservationInfo contains information that SlotSupplier instances can use during
 // reservation calls. It embeds a standard Context.
 //
-// Exposed as: [go.temporal.io/sdk/worker.SlotReservationInfo]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.SlotReservationInfo]
 type SlotReservationInfo interface {
 	// TaskQueue returns the task queue for which a slot is being reserved. In the case of local
 	// activities, this is the same as the workflow's task queue.
@@ -63,7 +63,7 @@ type SlotReservationInfo interface {
 // SlotMarkUsedInfo contains information that SlotSupplier instances can use during
 // SlotSupplier.MarkSlotUsed calls.
 //
-// Exposed as: [go.temporal.io/sdk/worker.SlotMarkUsedInfo]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.SlotMarkUsedInfo]
 type SlotMarkUsedInfo interface {
 	// Permit returns the permit that is being marked as used.
 	Permit() *SlotPermit
@@ -85,7 +85,7 @@ const (
 // SlotReleaseInfo contains information that SlotSupplier instances can use during
 // SlotSupplier.ReleaseSlot calls.
 //
-// Exposed as: [go.temporal.io/sdk/worker.SlotReleaseInfo]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.SlotReleaseInfo]
 type SlotReleaseInfo interface {
 	// Permit returns the permit that is being released.
 	Permit() *SlotPermit
@@ -100,7 +100,7 @@ type SlotReleaseInfo interface {
 
 // SlotSupplier controls how slots are handed out for workflow and activity tasks as well as
 // local activities when used in conjunction with a WorkerTuner.
-// Exposed as: [go.temporal.io/sdk/worker.SlotSupplier]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.SlotSupplier]
 type SlotSupplier interface {
 	// ReserveSlot is called before polling for new tasks. The implementation should block until
 	// a slot is available, then return a permit to use that slot. Implementations must be
@@ -157,7 +157,7 @@ func (c *CompositeTuner) GetSessionActivitySlotSupplier() SlotSupplier {
 
 // CompositeTunerOptions are the options used by NewCompositeTuner.
 //
-// Exposed as: [go.temporal.io/sdk/worker.CompositeTunerOptions]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.CompositeTunerOptions]
 type CompositeTunerOptions struct {
 	// WorkflowSlotSupplier is the SlotSupplier used for workflow tasks.
 	WorkflowSlotSupplier SlotSupplier
@@ -172,7 +172,7 @@ type CompositeTunerOptions struct {
 }
 
 // NewCompositeTuner creates a WorkerTuner that uses a combination of slot suppliers.
-// Exposed as: [go.temporal.io/sdk/worker.NewCompositeTuner]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.NewCompositeTuner]
 func NewCompositeTuner(options CompositeTunerOptions) (WorkerTuner, error) {
 	return &CompositeTuner{
 		workflowSlotSupplier:        options.WorkflowSlotSupplier,
@@ -185,7 +185,7 @@ func NewCompositeTuner(options CompositeTunerOptions) (WorkerTuner, error) {
 
 // FixedSizeTunerOptions are the options used by NewFixedSizeTuner.
 //
-// Exposed as: [go.temporal.io/sdk/worker.FixedSizeTunerOptions]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.FixedSizeTunerOptions]
 type FixedSizeTunerOptions struct {
 	// NumWorkflowSlots is the number of slots available for workflow tasks.
 	NumWorkflowSlots int
@@ -199,7 +199,7 @@ type FixedSizeTunerOptions struct {
 
 // NewFixedSizeTuner creates a WorkerTuner that uses fixed size slot suppliers.
 //
-// Exposed as: [go.temporal.io/sdk/worker.NewFixedSizeTuner]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.NewFixedSizeTuner]
 func NewFixedSizeTuner(options FixedSizeTunerOptions) (WorkerTuner, error) {
 	if options.NumWorkflowSlots <= 0 {
 		options.NumWorkflowSlots = defaultMaxConcurrentTaskExecutionSize
@@ -251,7 +251,7 @@ type FixedSizeSlotSupplier struct {
 
 // NewFixedSizeSlotSupplier creates a new FixedSizeSlotSupplier with the given number of slots.
 //
-// Exposed as: [go.temporal.io/sdk/worker.NewFixedSizeSlotSupplier]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/worker.NewFixedSizeSlotSupplier]
 func NewFixedSizeSlotSupplier(numSlots int) (*FixedSizeSlotSupplier, error) {
 	if numSlots <= 0 {
 		return nil, fmt.Errorf("NumSlots must be positive")

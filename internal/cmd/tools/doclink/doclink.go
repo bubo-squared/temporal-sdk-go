@@ -363,7 +363,7 @@ func processInternal(cfg config, file *os.File, pairs map[string]map[string]stri
 				staleLink := true
 				for packageName, pair := range pairs {
 					for public := range pair {
-						docLink := fmt.Sprintf("[go.temporal.io/sdk/%s.%s]", packageName, public)
+						docLink := fmt.Sprintf("[github.com/bubo-squared/temporal-go-sdk/%s.%s]", packageName, public)
 						if link == docLink {
 							staleLink = false
 						}
@@ -406,7 +406,7 @@ func processInternal(cfg config, file *os.File, pairs map[string]map[string]stri
 			for packageName, pair := range pairs {
 				for public, private := range pair {
 					if isValidDefinitionWithMatch(trimmedNextLine, private, inGroup, inStruct) {
-						docLink := fmt.Sprintf("[go.temporal.io/sdk/%s.%s]", packageName, public)
+						docLink := fmt.Sprintf("[github.com/bubo-squared/temporal-go-sdk/%s.%s]", packageName, public)
 						missingDoc := false
 						if existingDoclink == "" || !strings.Contains(existingDoclink, docLink) {
 							missingDoc = true

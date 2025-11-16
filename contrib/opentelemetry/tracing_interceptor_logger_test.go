@@ -14,12 +14,12 @@ import (
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 	"go.opentelemetry.io/otel/sdk/trace/tracetest"
 
-	"go.temporal.io/sdk/activity"
-	"go.temporal.io/sdk/contrib/opentelemetry"
-	"go.temporal.io/sdk/interceptor"
-	"go.temporal.io/sdk/testsuite"
-	"go.temporal.io/sdk/worker"
-	"go.temporal.io/sdk/workflow"
+	"github.com/bubo-squared/temporal-go-sdk/activity"
+	"github.com/bubo-squared/temporal-go-sdk/contrib/opentelemetry"
+	"github.com/bubo-squared/temporal-go-sdk/interceptor"
+	"github.com/bubo-squared/temporal-go-sdk/testsuite"
+	"github.com/bubo-squared/temporal-go-sdk/worker"
+	"github.com/bubo-squared/temporal-go-sdk/workflow"
 )
 
 func TestLogFields(t *testing.T) {

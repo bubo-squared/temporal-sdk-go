@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"go.temporal.io/sdk/internal/log"
+	"github.com/bubo-squared/temporal-go-sdk/internal/log"
 )
 
 type FakeSystemInfoSupplier struct {

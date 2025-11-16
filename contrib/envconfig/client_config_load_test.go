@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"go.temporal.io/sdk/contrib/envconfig"
+	"github.com/bubo-squared/temporal-go-sdk/contrib/envconfig"
 )
 
 func TestLoadClientOptionsFile(t *testing.T) {

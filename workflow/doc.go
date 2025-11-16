@@ -22,7 +22,7 @@ the sole parameter it receives as part of its initialization as a parameter to t
 	import (
 		"time"
 
-		"go.temporal.io/sdk/workflow"
+		"github.com/bubo-squared/temporal-go-sdk/workflow"
 	)
 
 	func SimpleWorkflow(ctx workflow.Context, value string) error {
@@ -472,7 +472,7 @@ The code below implements the unit tests for the SimpleWorkflow sample.
 		"github.com/stretchr/testify/mock"
 		"github.com/stretchr/testify/suite"
 
-		"go.temporal.io/sdk/testsuite"
+		"github.com/bubo-squared/temporal-go-sdk/testsuite"
 	)
 
 	type UnitTestSuite struct {
@@ -528,9 +528,9 @@ The code below implements the unit tests for the SimpleWorkflow sample.
 
 First, we define a "test suite" struct that absorbs both the basic suite functionality from [testify]
 via suite.Suite and the suite functionality from the Temporal test
-framework via [go.temporal.io/sdk/testsuite.WorkflowTestSuite]. Since every test in this suite will test our workflow we add a property to
+framework via [github.com/bubo-squared/temporal-go-sdk/testsuite.WorkflowTestSuite]. Since every test in this suite will test our workflow we add a property to
 our struct to hold an instance of the test environment. This will allow us to initialize the test environment in a
-setup method. For testing workflows we use a [go.temporal.io/sdk/testsuite.TestWorkflowEnvironment].
+setup method. For testing workflows we use a [github.com/bubo-squared/temporal-go-sdk/testsuite.TestWorkflowEnvironment].
 
 We then implement a SetupTest method to set up a new test environment before each test. Doing so ensures that each test
 runs in its own isolated sandbox. We also implement an AfterTest function where we assert that all mocks we set up were

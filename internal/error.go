@@ -11,7 +11,7 @@ import (
 	enumspb "go.temporal.io/api/enums/v1"
 	failurepb "go.temporal.io/api/failure/v1"
 
-	"go.temporal.io/sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
 )
 
 /*
@@ -98,7 +98,7 @@ type (
 	// ApplicationErrorOptions represents a combination of error attributes and additional requests.
 	// All fields are optional, providing flexibility in error customization.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.ApplicationErrorOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ApplicationErrorOptions]
 	ApplicationErrorOptions struct {
 		// NonRetryable indicates if the error should not be retried regardless of the retry policy.
 		NonRetryable bool
@@ -119,7 +119,7 @@ type (
 
 	// ApplicationError returned from activity implementations with message and optional details.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.ApplicationError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ApplicationError]
 	ApplicationError struct {
 		temporalError
 		msg            string
@@ -133,7 +133,7 @@ type (
 
 	// TimeoutError returned when activity or child workflow timed out.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.TimeoutError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.TimeoutError]
 	TimeoutError struct {
 		temporalError
 		msg                  string
@@ -144,7 +144,7 @@ type (
 
 	// CanceledError returned when operation was canceled.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.CanceledError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.CanceledError]
 	CanceledError struct {
 		temporalError
 		details converter.EncodedValues
@@ -152,14 +152,14 @@ type (
 
 	// TerminatedError returned when workflow was terminated.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.TerminatedError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.TerminatedError]
 	TerminatedError struct {
 		temporalError
 	}
 
 	// PanicError contains information about panicked workflow/activity.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.PanicError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.PanicError]
 	PanicError struct {
 		temporalError
 		value      interface{}
@@ -175,7 +175,7 @@ type (
 
 	// ContinueAsNewError contains information about how to continue the workflow as new.
 	//
-	// Exposed as: [go.temporal.io/sdk/workflow.ContinueAsNewError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.ContinueAsNewError]
 	ContinueAsNewError struct {
 		// params *ExecuteWorkflowParams
 		WorkflowType        *WorkflowType
@@ -207,7 +207,7 @@ type (
 
 	// ContinueAsNewErrorOptions specifies optional attributes to be carried over to the next run.
 	//
-	// Exposed as: [go.temporal.io/sdk/workflow.ContinueAsNewErrorOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.ContinueAsNewErrorOptions]
 	ContinueAsNewErrorOptions struct {
 		// RetryPolicy specifies the retry policy to be used for the next run.
 		// If nil, the current workflow's retry policy will be used.
@@ -219,7 +219,7 @@ type (
 
 	// ServerError can be returned from server.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.ServerError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ServerError]
 	ServerError struct {
 		temporalError
 		msg          string
@@ -230,7 +230,7 @@ type (
 	// ActivityError is returned from workflow when activity returned an error.
 	// Unwrap this error to get actual cause.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.ActivityError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ActivityError]
 	ActivityError struct {
 		temporalError
 		scheduledEventID int64
@@ -245,7 +245,7 @@ type (
 	// ChildWorkflowExecutionError is returned from workflow when child workflow returned an error.
 	// Unwrap this error to get actual cause.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.ChildWorkflowExecutionError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ChildWorkflowExecutionError]
 	ChildWorkflowExecutionError struct {
 		temporalError
 		namespace        string
@@ -260,7 +260,7 @@ type (
 
 	// NexusOperationError is an error returned when a Nexus Operation has failed.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.NexusOperationError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.NexusOperationError]
 	NexusOperationError struct {
 		// The raw proto failure object this error was created from.
 		Failure *failurepb.Failure
@@ -291,7 +291,7 @@ type (
 	// WorkflowExecutionError is returned from workflow.
 	// Unwrap this error to get actual cause.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.WorkflowExecutionError]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.WorkflowExecutionError]
 	WorkflowExecutionError struct {
 		workflowID   string
 		runID        string
@@ -326,7 +326,7 @@ var (
 
 	// ErrNoData is returned when trying to extract strong typed data while there is no data available.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.ErrNoData]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ErrNoData]
 	ErrNoData = errors.New("no data available")
 
 	// ErrTooManyArg is returned when trying to extract strong typed data with more arguments than available data.
@@ -338,17 +338,17 @@ var (
 	// which indicate the activity is not done yet. Then, when the waited human action happened, it needs to trigger something
 	// that could report the activity completed event to temporal server via Client.CompleteActivity() API.
 	//
-	// Exposed as: [go.temporal.io/sdk/activity.ErrResultPending]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/activity.ErrResultPending]
 	ErrActivityResultPending = errors.New("not error: do not autocomplete, using Client.CompleteActivity() to complete")
 
 	// ErrScheduleAlreadyRunning is returned if there's already a running (not deleted) Schedule with the same ID
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.ErrScheduleAlreadyRunning]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ErrScheduleAlreadyRunning]
 	ErrScheduleAlreadyRunning = errors.New("schedule with this ID is already registered")
 
 	// ErrSkipScheduleUpdate is used by a user if they want to skip updating a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.ErrSkipScheduleUpdate]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ErrSkipScheduleUpdate]
 	ErrSkipScheduleUpdate = errors.New("skip schedule update")
 
 	// ErrMissingWorkflowID is returned when trying to start an async Nexus operation but no workflow ID is set on the request.
@@ -358,17 +358,17 @@ var (
 // ApplicationErrorCategory sets the category of the error. The category of the error
 // maps to logging/metrics behaviors.
 //
-// Exposed as: [go.temporal.io/sdk/temporal.ApplicationErrorCategory]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ApplicationErrorCategory]
 type ApplicationErrorCategory int
 
 const (
 	// ApplicationErrorCategoryUnspecified represents an error with an unspecified category.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.ApplicationErrorCategoryUnspecified]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ApplicationErrorCategoryUnspecified]
 	ApplicationErrorCategoryUnspecified ApplicationErrorCategory = iota
 	// ApplicationErrorCategoryBenign indicates an error that is expected under normal operation and should not trigger alerts.
 	//
-	// Exposed as: [go.temporal.io/sdk/temporal.ApplicationErrorCategoryBenign]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.ApplicationErrorCategoryBenign]
 	ApplicationErrorCategoryBenign
 )
 
@@ -381,7 +381,7 @@ func NewApplicationError(msg string, errType string, nonRetryable bool, cause er
 	)
 }
 
-// Exposed as: [go.temporal.io/sdk/temporal.NewApplicationError], [go.temporal.io/sdk/temporal.NewApplicationErrorWithOptions], [go.temporal.io/sdk/temporal.NewApplicationErrorWithCause], [go.temporal.io/sdk/temporal.NewNonRetryableApplicationError]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.NewApplicationError], [github.com/bubo-squared/temporal-go-sdk/temporal.NewApplicationErrorWithOptions], [github.com/bubo-squared/temporal-go-sdk/temporal.NewApplicationErrorWithCause], [github.com/bubo-squared/temporal-go-sdk/temporal.NewNonRetryableApplicationError]
 func NewApplicationErrorWithOptions(msg string, errType string, options ApplicationErrorOptions) error {
 	applicationErr := &ApplicationError{
 		msg:            msg,
@@ -408,7 +408,7 @@ func NewApplicationErrorWithOptions(msg string, errType string, options Applicat
 // NewTimeoutError creates TimeoutError instance.
 // Use NewHeartbeatTimeoutError to create heartbeat TimeoutError.
 //
-// Exposed as: [go.temporal.io/sdk/temporal.NewTimeoutError]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.NewTimeoutError]
 func NewTimeoutError(msg string, timeoutType enumspb.TimeoutType, cause error, lastHeartbeatDetails ...interface{}) error {
 	timeoutErr := &TimeoutError{
 		msg:         msg,
@@ -428,14 +428,14 @@ func NewTimeoutError(msg string, timeoutType enumspb.TimeoutType, cause error, l
 
 // NewHeartbeatTimeoutError creates TimeoutError instance.
 //
-// Exposed as: [go.temporal.io/sdk/temporal.NewHeartbeatTimeoutError]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.NewHeartbeatTimeoutError]
 func NewHeartbeatTimeoutError(details ...interface{}) error {
 	return NewTimeoutError("heartbeat timeout", enumspb.TIMEOUT_TYPE_HEARTBEAT, nil, details...)
 }
 
 // NewCanceledError creates CanceledError instance.
 //
-// Exposed as: [go.temporal.io/sdk/temporal.NewCanceledError]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/temporal.NewCanceledError]
 func NewCanceledError(details ...interface{}) error {
 	if len(details) == 1 {
 		if d, ok := details[0].(*EncodedValues); ok {
@@ -536,7 +536,7 @@ func IsCanceledError(err error) bool {
 //	 wfn - workflow function. for new execution it can be different from the currently running.
 //	 args - arguments for the new workflow.
 //
-// Exposed as: [go.temporal.io/sdk/workflow.NewContinueAsNewError]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewContinueAsNewError]
 func NewContinueAsNewError(ctx Context, wfn interface{}, args ...interface{}) error {
 	i := getWorkflowOutboundInterceptor(ctx)
 	// Put header on context before executing
@@ -546,7 +546,7 @@ func NewContinueAsNewError(ctx Context, wfn interface{}, args ...interface{}) er
 
 // NewContinueAsNewErrorWithOptions creates ContinueAsNewError instance with additional options.
 //
-// Exposed as: [go.temporal.io/sdk/workflow.NewContinueAsNewErrorWithOptions]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.NewContinueAsNewErrorWithOptions]
 func NewContinueAsNewErrorWithOptions(ctx Context, options ContinueAsNewErrorOptions, wfn interface{}, args ...interface{}) error {
 	err := NewContinueAsNewError(ctx, wfn, args...)
 

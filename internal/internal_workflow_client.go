@@ -29,12 +29,12 @@ import (
 	updatepb "go.temporal.io/api/update/v1"
 	"go.temporal.io/api/workflowservice/v1"
 
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/internal/common/metrics"
-	"go.temporal.io/sdk/internal/common/retry"
-	"go.temporal.io/sdk/internal/common/serializer"
-	"go.temporal.io/sdk/internal/common/util"
-	"go.temporal.io/sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/retry"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/serializer"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/util"
+	"github.com/bubo-squared/temporal-go-sdk/log"
 )
 
 // Assert that structs do indeed implement the interfaces

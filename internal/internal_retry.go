@@ -6,7 +6,7 @@ import (
 	"context"
 	"time"
 
-	"go.temporal.io/sdk/internal/common/backoff"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/backoff"
 )
 
 const (

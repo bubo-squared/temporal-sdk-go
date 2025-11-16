@@ -6,9 +6,9 @@ import (
 	"github.com/opentracing/opentracing-go/mocktracer"
 	"github.com/stretchr/testify/require"
 
-	"go.temporal.io/sdk/contrib/opentracing"
-	"go.temporal.io/sdk/interceptor"
-	"go.temporal.io/sdk/internal/interceptortest"
+	"github.com/bubo-squared/temporal-go-sdk/contrib/opentracing"
+	"github.com/bubo-squared/temporal-go-sdk/interceptor"
+	"github.com/bubo-squared/temporal-go-sdk/internal/interceptortest"
 )
 
 func TestSpanPropagation(t *testing.T) {

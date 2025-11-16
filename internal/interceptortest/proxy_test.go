@@ -6,12 +6,12 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/require"
-	"go.temporal.io/sdk/activity"
-	"go.temporal.io/sdk/interceptor"
-	"go.temporal.io/sdk/internal/interceptortest"
-	"go.temporal.io/sdk/testsuite"
-	"go.temporal.io/sdk/worker"
-	"go.temporal.io/sdk/workflow"
+	"github.com/bubo-squared/temporal-go-sdk/activity"
+	"github.com/bubo-squared/temporal-go-sdk/interceptor"
+	"github.com/bubo-squared/temporal-go-sdk/internal/interceptortest"
+	"github.com/bubo-squared/temporal-go-sdk/testsuite"
+	"github.com/bubo-squared/temporal-go-sdk/worker"
+	"github.com/bubo-squared/temporal-go-sdk/workflow"
 )
 
 func TestProxy(t *testing.T) {

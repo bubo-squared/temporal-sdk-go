@@ -56,7 +56,7 @@ const (
 //
 // NOTE: Experimental
 //
-// Exposed as: [go.temporal.io/sdk/client.WorkerVersioningMode]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerVersioningMode]
 type WorkerVersioningMode int
 
 const (
@@ -64,7 +64,7 @@ const (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerVersioningModeUnspecified]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerVersioningModeUnspecified]
 	WorkerVersioningModeUnspecified = iota
 
 	// WorkerVersioningModeUnversioned - Workers with this mode are not
@@ -73,7 +73,7 @@ const (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerVersioningModeUnversioned]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerVersioningModeUnversioned]
 	WorkerVersioningModeUnversioned
 
 	// WorkerVersioningModeVersioned - Workers with this mode are part of a
@@ -86,7 +86,7 @@ const (
 	//
 	// NOTE: Experimental
 	//
-	// Exposed as: [go.temporal.io/sdk/client.WorkerVersioningModeVersioned]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.WorkerVersioningModeVersioned]
 	WorkerVersioningModeVersioned
 )
 

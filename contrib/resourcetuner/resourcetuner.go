@@ -10,8 +10,8 @@ import (
 	"github.com/shirou/gopsutil/v4/cpu"
 	"github.com/shirou/gopsutil/v4/mem"
 	"go.einride.tech/pid"
-	"go.temporal.io/sdk/log"
-	"go.temporal.io/sdk/worker"
+	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/worker"
 )
 
 type ResourceBasedTunerOptions struct {

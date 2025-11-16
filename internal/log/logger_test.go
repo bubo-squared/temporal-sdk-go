@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.temporal.io/sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/log"
 )
 
 func TestMemoryLogger_With(t *testing.T) {

@@ -14,7 +14,7 @@ type (
 	// equal to start. This means you can use a Range with start set to a value, and
 	// end and step unset (defaulting to 0) to represent a single value.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleRange]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleRange]
 	ScheduleRange struct {
 		// Start of the range (inclusive)
 		Start int
@@ -35,7 +35,7 @@ type (
 	// corresponding fields of the timestamp, except for year: if year is missing,
 	// that means all years match. For all fields besides year, at least one Range must be present to match anything.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleCalendarSpec]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleCalendarSpec]
 	ScheduleCalendarSpec struct {
 		// Second range to match (0-59).
 		//
@@ -78,7 +78,7 @@ type (
 
 	// ScheduleBackfill desribes a time periods and policy and takes Actions as if that time passed by right now, all at once.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleBackfill]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleBackfill]
 	ScheduleBackfill struct {
 		// Start - start of the range to evaluate schedule in.
 		Start time.Time
@@ -101,7 +101,7 @@ type (
 	// (among other times). The same `every` with `offset` of 3 days, 5 hours, and 23 minutes would match `2022-02-20T05:23:00Z`
 	// instead.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleIntervalSpec]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleIntervalSpec]
 	ScheduleIntervalSpec struct {
 		// Every - describes the period to repeat the interval.
 		Every time.Duration
@@ -117,7 +117,7 @@ type (
 	// never change, except that the definition of a time zone can change over time (most commonly, when daylight saving
 	// time policy changes for an area). To create a totally self-contained ScheduleSpec, use UTC.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleSpec]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleSpec]
 	ScheduleSpec struct {
 		// Calendars - Calendar-based specifications of times
 		Calendars []ScheduleCalendarSpec
@@ -227,7 +227,7 @@ type (
 
 	// ScheduleWorkflowAction implements ScheduleAction to launch a workflow.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleWorkflowAction]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleWorkflowAction]
 	ScheduleWorkflowAction struct {
 		// ID - The business identifier of the workflow execution.
 		// The workflow ID of the started workflow may not match this exactly,
@@ -313,7 +313,7 @@ type (
 
 	// ScheduleOptions configure the parameters for creating a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleOptions]
 	ScheduleOptions struct {
 		// ID - The business identifier of the schedule.
 		ID string
@@ -401,7 +401,7 @@ type (
 
 	// ScheduleWorkflowExecution contains details on a workflows execution stared by a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleWorkflowExecution]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleWorkflowExecution]
 	ScheduleWorkflowExecution struct {
 		// WorkflowID - The ID of the workflow execution
 		WorkflowID string
@@ -413,7 +413,7 @@ type (
 
 	// ScheduleInfo describes other information about a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleInfo]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleInfo]
 	ScheduleInfo struct {
 		// NumActions - Number of actions taken by this schedule.
 		NumActions int
@@ -445,7 +445,7 @@ type (
 
 	// ScheduleDescription describes the current Schedule details from ScheduleHandle.Describe.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleDescription]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleDescription]
 	ScheduleDescription struct {
 		// Schedule - Describes the modifiable fields of a schedule.
 		Schedule Schedule
@@ -473,7 +473,7 @@ type (
 
 	// SchedulePolicies describes the current polcies of a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.SchedulePolicies]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.SchedulePolicies]
 	SchedulePolicies struct {
 		// Overlap - Controls what happens when an Action would be started by a Schedule at the same time that an older Action is still
 		// running.
@@ -489,7 +489,7 @@ type (
 
 	// ScheduleState describes the current state of a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleState]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleState]
 	ScheduleState struct {
 		// Note - Informative human-readable message with contextual notes, e.g. the reason
 		// a Schedule is paused. The system may overwrite this message on certain
@@ -510,7 +510,7 @@ type (
 
 	// Schedule describes a created schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.Schedule]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.Schedule]
 	Schedule struct {
 		// Action - Which Action to take
 		Action ScheduleAction
@@ -527,7 +527,7 @@ type (
 
 	// ScheduleUpdate describes the desired new schedule from ScheduleHandle.Update.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleUpdate]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleUpdate]
 	ScheduleUpdate struct {
 		// Schedule - New schedule to replace the existing schedule with
 		Schedule *Schedule
@@ -544,7 +544,7 @@ type (
 
 	// ScheduleUpdateInput describes the current state of the schedule to be updated.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleUpdateInput]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleUpdateInput]
 	ScheduleUpdateInput struct {
 		// Description - current description of the schedule
 		Description ScheduleDescription
@@ -552,7 +552,7 @@ type (
 
 	// ScheduleUpdateOptions configure the parameters for updating a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleUpdateOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleUpdateOptions]
 	ScheduleUpdateOptions struct {
 		// DoUpdate - Takes a description of the schedule and returns the new desired schedule.
 		// If update returns ErrSkipScheduleUpdate response and no update will occur.
@@ -562,7 +562,7 @@ type (
 
 	// ScheduleTriggerOptions configure the parameters for triggering a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleTriggerOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleTriggerOptions]
 	ScheduleTriggerOptions struct {
 		// Overlap - If specified, policy to override the schedules default overlap policy.
 		Overlap enumspb.ScheduleOverlapPolicy
@@ -570,7 +570,7 @@ type (
 
 	// SchedulePauseOptions configure the parameters for pausing a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.SchedulePauseOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.SchedulePauseOptions]
 	SchedulePauseOptions struct {
 		// Note - Informative human-readable message with contextual notes.
 		//
@@ -580,7 +580,7 @@ type (
 
 	// ScheduleUnpauseOptions configure the parameters for unpausing a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleUnpauseOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleUnpauseOptions]
 	ScheduleUnpauseOptions struct {
 		// Note - Informative human-readable message with contextual notes.
 		//
@@ -590,7 +590,7 @@ type (
 
 	// ScheduleBackfillOptions configure the parameters for backfilling a schedule.
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleBackfillOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleBackfillOptions]
 	ScheduleBackfillOptions struct {
 		// Backfill  - Time periods to backfill the schedule.
 		Backfill []ScheduleBackfill
@@ -630,7 +630,7 @@ type (
 
 	// ScheduleActionResult describes when a schedule action took place
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleActionResult]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleActionResult]
 	ScheduleActionResult struct {
 		// ScheduleTime - Time that the Action was scheduled for, including jitter.
 		ScheduleTime time.Time
@@ -645,7 +645,7 @@ type (
 
 	// ScheduleListEntry
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleListEntry]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleListEntry]
 	ScheduleListEntry struct {
 		// ID - The business identifier of the schedule.
 		ID string
@@ -686,7 +686,7 @@ type (
 
 	// ScheduleListOptions are the parameters for configuring listing schedules
 	//
-	// Exposed as: [go.temporal.io/sdk/client.ScheduleListOptions]
+	// Exposed as: [github.com/bubo-squared/temporal-go-sdk/client.ScheduleListOptions]
 	ScheduleListOptions struct {
 		// PageSize - How many results to fetch from the Server at a time.
 		//

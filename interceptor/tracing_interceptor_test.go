@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"go.temporal.io/sdk/interceptor"
-	"go.temporal.io/sdk/internal/interceptortest"
+	"github.com/bubo-squared/temporal-go-sdk/interceptor"
+	"github.com/bubo-squared/temporal-go-sdk/internal/interceptortest"
 )
 
 type testTracer struct {

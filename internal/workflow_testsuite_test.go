@@ -14,8 +14,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	failurepb "go.temporal.io/api/failure/v1"
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/log"
 
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"

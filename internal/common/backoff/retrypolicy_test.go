@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"go.temporal.io/sdk/internal/common/retry"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/retry"
 )
 
 type TestClock struct {

@@ -6,7 +6,7 @@ import (
 	"time"
 
 	commonpb "go.temporal.io/api/common/v1"
-	"go.temporal.io/sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
 )
 
 type deadlockDetector struct {
@@ -45,7 +45,7 @@ func ResumeDeadlockDetector(ctx Context) {
 // otherwise intentionally execute longer than the default deadlock detection
 // timeout.
 //
-// Exposed as: [go.temporal.io/sdk/workflow.DataConverterWithoutDeadlockDetection]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.DataConverterWithoutDeadlockDetection]
 func DataConverterWithoutDeadlockDetection(c converter.DataConverter) converter.DataConverter {
 	return &dataConverterWithoutDeadlock{underlying: c}
 }
@@ -152,7 +152,7 @@ type dataConverterWithoutDeadlock struct {
 	underlying converter.DataConverter
 }
 
-// Exposed as: [go.temporal.io/sdk/workflow.ContextAware]
+// Exposed as: [github.com/bubo-squared/temporal-go-sdk/workflow.ContextAware]
 var _ ContextAware = &dataConverterWithoutDeadlock{}
 
 func (d *dataConverterWithoutDeadlock) ToPayload(value interface{}) (*commonpb.Payload, error) {

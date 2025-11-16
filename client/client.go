@@ -16,9 +16,9 @@ import (
 	"go.temporal.io/api/operatorservice/v1"
 	"go.temporal.io/api/workflowservice/v1"
 
-	"go.temporal.io/sdk/converter"
-	"go.temporal.io/sdk/internal"
-	"go.temporal.io/sdk/internal/common/metrics"
+	"github.com/bubo-squared/temporal-go-sdk/converter"
+	"github.com/bubo-squared/temporal-go-sdk/internal"
+	"github.com/bubo-squared/temporal-go-sdk/internal/common/metrics"
 )
 
 // DeploymentReachability specifies which category of tasks may reach a worker
@@ -1376,7 +1376,7 @@ type (
 // built to be a general purpose metrics abstraction for all uses.
 //
 // A common implementation is at
-// go.temporal.io/sdk/contrib/tally.NewMetricsHandler. The MetricsNopHandler is
+// github.com/bubo-squared/temporal-go-sdk/contrib/tally.NewMetricsHandler. The MetricsNopHandler is
 // a noop handler. A handler may implement "Unwrap() client.MetricsHandler" if
 // it wraps a handler.
 type MetricsHandler = metrics.Handler

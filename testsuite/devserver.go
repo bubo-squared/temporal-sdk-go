@@ -19,11 +19,11 @@ import (
 	"strings"
 	"time"
 
-	"go.temporal.io/sdk/client"
-	"go.temporal.io/sdk/internal"
-	ilog "go.temporal.io/sdk/internal/log"
-	"go.temporal.io/sdk/log"
-	"go.temporal.io/sdk/temporal"
+	"github.com/bubo-squared/temporal-go-sdk/client"
+	"github.com/bubo-squared/temporal-go-sdk/internal"
+	ilog "github.com/bubo-squared/temporal-go-sdk/internal/log"
+	"github.com/bubo-squared/temporal-go-sdk/log"
+	"github.com/bubo-squared/temporal-go-sdk/temporal"
 )
 
 // Cached download of the dev server.
